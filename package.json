@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-		"browser": "firefox --kiosk http://localhost:3000",
+    "browser": "firefox --kiosk http://localhost:3000",
     "start": "ng serve --port 3000 & npm run browser",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "bootstrap": "^5.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

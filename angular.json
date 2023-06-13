@@ -96,9 +96,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": ["bootstrap/dist/js/bootstrap.min.js"]
           }
         }
       }
