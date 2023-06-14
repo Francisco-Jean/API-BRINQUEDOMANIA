@@ -29,16 +29,16 @@ public class UserController {
     public ResponseEntity<List<UserModel>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findAll());
     }
-    @GetMapping("/user/clientes/listOne/{identifier}")
+    @GetMapping("/user/cliente/listOne/{identifier}")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "identifier") String identifier) {
-        UserModel user0 = userRepository.findByIdentifier(identifier);
+         UserModel user0 = userRepository.findByIdentifier(identifier);
         if (user0 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
         }
-        return ResponseEntity.status(HttpStatus.OK).body(user0.getIdentifier());
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByIdentifier(identifier));
     }
 
-    @PutMapping("/user/editar_cliente/{id}")
+    /*@PutMapping("/user/editar_cliente/{id}")
     public ResponseEntity<Object> updateUser(@PathVariable(value="id") UUID id,
                                              @RequestBody @Valid UserRecordDto userRecordDto) {
         Optional<UserModel> user0 = userRepository.findById(id);
@@ -57,5 +57,5 @@ public class UserController {
         }
         userRepository.delete(user0.get());
         return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully");
-    }
+    }*/
 }
