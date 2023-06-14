@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-public class ProductController {
+public class UserController {
 
     @Autowired
     UserRepository userRepository;
@@ -26,11 +26,11 @@ public class ProductController {
         BeanUtils.copyProperties(userRecordDto, userModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(userModel));
     }
-    @GetMapping("/user/cadastro")
+    @GetMapping("/user/client_list")
     public ResponseEntity<List<UserModel>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findAll());
     }
-    @GetMapping("/user/cadastro/{id}")
+    @GetMapping("/user/client/{id}")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "id") UUID id) {
         Optional<UserModel> user0 = userRepository.findById(id);
         if (user0.isEmpty()) {
@@ -39,10 +39,24 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.OK).body(user0.get());
     }
-    /*
-    @GetMapping("/home/{name}")
-    public String bemVindo(@PathVariable String name){
-        return "Bem-vindo, " + name;
+    @PutMapping("/user/{id}")
+    public ResponseEntity<Object> updateUser(@PathVariable(value="id") UUID id,
+                                             @RequestBody @Valid UserRecordDto userRecordDto) {
+        Optional<UserModel> user0 = userRepository.findById(id);
+        if(user0.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+        var userModel = user0.get();
+        BeanUtils.copyProperties(userRecordDto, userModel);
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.save(userModel));
     }
-    */
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
+        Optional<UserModel> user0 = userRepository.findById(id);
+        if(user0.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+        userRepository.delete(user0.get());
+        return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully");
+    }
 }
