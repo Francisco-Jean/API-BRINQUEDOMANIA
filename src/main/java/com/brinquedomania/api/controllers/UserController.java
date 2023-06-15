@@ -19,17 +19,17 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
-    @PostMapping("/user/cliente/cadastro")
+    @PostMapping("/user/register")
     public ResponseEntity<UserModel> saveUser(@RequestBody @Valid UserRecordDto userRecordDto) {
         var userModel = new UserModel();
         BeanUtils.copyProperties(userRecordDto, userModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(userModel));
     }
-    @GetMapping("/user/cliente/listAll")
+    @GetMapping("/user/listAll")
     public ResponseEntity<List<UserModel>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findAll());
     }
-    @GetMapping("/user/cliente/listOne/{identifier}")
+    @GetMapping("/user/listOne/{identifier}")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "identifier") String identifier) {
          UserModel user0 = userRepository.findByIdentifier(identifier);
         if (user0 == null) {
@@ -38,24 +38,24 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByIdentifier(identifier));
     }
 
-    /*@PutMapping("/user/editar_cliente/{id}")
-    public ResponseEntity<Object> updateUser(@PathVariable(value="id") UUID id,
+    @PutMapping("/user/edit/{identifier}")
+    public ResponseEntity<Object> updateUser(@PathVariable(value="identifier") String identifier,
                                              @RequestBody @Valid UserRecordDto userRecordDto) {
-        Optional<UserModel> user0 = userRepository.findById(id);
-        if(user0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        UserModel user0 = userRepository.findByIdentifier(identifier);
+        if(user0 == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
         }
-        var userModel = user0.get();
+        var userModel = userRepository.findByIdentifier(identifier);
         BeanUtils.copyProperties(userRecordDto, userModel);
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.save(userModel));
     }
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
-        Optional<UserModel> user0 = userRepository.findById(id);
-        if(user0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+    @DeleteMapping("/user/delete/{identifier}")
+    public ResponseEntity<Object> deleteUser(@PathVariable(value="identifier") String identifier) {
+        UserModel user0 = userRepository.findByIdentifier(identifier);
+        if(user0 == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
         }
-        userRepository.delete(user0.get());
-        return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully");
-    }*/
+        userRepository.delete(userRepository.findByIdentifier(identifier));
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com sucesso!");
+    }
 }
