@@ -28,10 +28,11 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": ["bootstrap/dist/js/bootstrap.bundle.min.js"]
           },
           "configurations": {
             "production": {
@@ -97,10 +98,10 @@
               "favicon.png"
             ],
             "styles": [
-              "src/styles.scss",
-              "bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.scss"
+              
             ],
-            "scripts": ["bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           }
         }
       }
