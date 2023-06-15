@@ -8,7 +8,6 @@ public class ApiBrinquedomaniaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiBrinquedomaniaApplication.class, args);
-		
 	}
 
 }
