@@ -10,13 +10,15 @@ import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,

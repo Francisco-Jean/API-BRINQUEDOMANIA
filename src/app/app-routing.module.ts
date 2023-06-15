@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 const routes: Routes = [
  {
@@ -13,7 +14,12 @@ const routes: Routes = [
   path: 'home',
   component: HomeComponent
  },
+ {
+  path: 'cadastro',
+  component: CadastroComponent
+ },
  
+
  {
   path:'', component:LayoutComponent,
   children:[

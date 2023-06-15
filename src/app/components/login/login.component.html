@@ -19,7 +19,7 @@
 
       <div class="form-container">
       
-       <div class="card shadow round mt-5">
+       <div class="card shadow round mt-6">
         <div class="class-header">
           <h3 class="text-center">Log-in </h3>
 
@@ -27,29 +27,41 @@
        </div>
        <div class="card-body">
   <form [formGroup]="formLogin" >
+    <hr>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nome de usuário</label>
-        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="username">
+        <div class="input-group">
+          <input type="text" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="username" placeholder="Usuário">
+          
+        
         
         <div class="form-text text-danger" *ngIf="isFormControlInvalid('username')">O nome de usuário deve conter pelo menos 6 caracteres</div>
       </div>
+      </div>
+
       <div class="mb-3">
-        <label for="InputPassword1" class="form-label">Senha</label>       
-        <input type="password" class="form-control" id="InputPassword1" formControlName="password">
+        <label for="InputPassword1" class="form-label">Senha</label> 
+        <div class="input-group">    
+        <input type="password" class="form-control" id="InputPassword1" formControlName="password" placeholder="Senha">
+
         <div class="form-text text-danger" *ngIf="isFormControlInvalid('password')">A senha deve conter pelo menos 6 caracteres</div>
-        
+        </div>  
       </div>
      
          <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" >
        
         <label class="form-check-label" for="exampleCheck1">Salvar dados</label>
+        
       </div>
       
-     
+      
+      
       <button type="submit" class="btn btn-primary" [disabled]="!formLogin.valid" (click)="submitForm()">Acessar</button>
     </form>
        </div>
+       
+       <div><a href="cadastro" class="custom-link" >Não possuo cadastro</a></div>
        
     </div>
     
@@ -59,11 +71,19 @@
 </div>
 
 
-
-
-
-
 <!--
+<div class="row fixed-bottom">
+  <div class="container text-center tex-light bg-dark p-1">
+    @ 2023 Copyright WebSite
+  </div>
+</div>
+
+
+
+
+
+
+
 <img src="assets/backgroundpic.png" class="img-fluid" id="background" alt="kids">
    <nav class="navbar">
     <div class="container">
