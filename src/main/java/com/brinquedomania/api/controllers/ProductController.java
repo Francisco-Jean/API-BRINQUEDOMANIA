@@ -17,11 +17,11 @@ import java.util.UUID;
 
 @RestController
 public class ProductController {
-
+/*
     @Autowired
     ProductRepository productRepository;
     @PostMapping("/product/cadastro")
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
 
-    }
+    }*/
 }

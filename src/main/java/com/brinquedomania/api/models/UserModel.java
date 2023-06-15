@@ -16,11 +16,13 @@ public class UserModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String type;
+    @Column(unique = true)
     private String email;
     private String password;
     private String name;
     private String adress;
     private Date birthDate;
+    @Column(unique = true)
     private String identifier;
 
     public UUID getId() {
