@@ -1,4 +1,6 @@
 package com.brinquedomania.api.dtos;
 
-public record ProductRecordDto() {
+import jakarta.validation.constraints.NotBlank;
+
+public record ProductRecordDto(@NotBlank String category, @NotBlank String description, @NotBlank Float value) {
 }
