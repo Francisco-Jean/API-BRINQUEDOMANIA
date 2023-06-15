@@ -15,9 +15,7 @@
     <img src="assets/backgroundpic.png" id="background" alt="kids">
     
     
-    
-    
-   
+
 
       <div class="form-container">
       
@@ -28,24 +26,28 @@
         </div>
        </div>
        <div class="card-body">
-  <form>
+  <form [formGroup]="formLogin" >
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nome de usuário</label>
-        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="username">
         
+        <div class="form-text text-danger" *ngIf="isFormControlInvalid('username')">O nome de usuário deve conter pelo menos 6 caracteres</div>
       </div>
       <div class="mb-3">
-        <label for="InputPassword1" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="InputPassword1">
+        <label for="InputPassword1" class="form-label">Senha</label>       
+        <input type="password" class="form-control" id="InputPassword1" formControlName="password">
+        <div class="form-text text-danger" *ngIf="isFormControlInvalid('password')">A senha deve conter pelo menos 6 caracteres</div>
+        
       </div>
      
          <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+       
         <label class="form-check-label" for="exampleCheck1">Salvar dados</label>
       </div>
       
      
-      <button type="submit" class="btn btn-primary">Acessar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!formLogin.valid" (click)="submitForm()">Acessar</button>
     </form>
        </div>
        
