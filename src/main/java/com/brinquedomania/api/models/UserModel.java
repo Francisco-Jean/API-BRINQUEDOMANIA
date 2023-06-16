@@ -15,14 +15,19 @@ public class UserModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Column(name = "TYPE", nullable = false)
     private String type;
-    @Column(unique = true)
+    @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
+    @Column(name = "NAME", nullable = false)
     private String name;
+    @Column(name = "ADRESS", nullable = false)
     private String adress;
+    @Column(name = "BIRTH_DATE", nullable = false)
     private Date birthDate;
-    @Column(unique = true)
+    @Column(name = "IDENTIFIER", nullable = false, unique = true)
     private String identifier;
 
     public UUID getId() {

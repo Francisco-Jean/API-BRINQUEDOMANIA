@@ -12,13 +12,24 @@ public class ProductModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_PRODUCT", nullable = false)
     private UUID id;
+    @Column(name = "ID_SELLER", nullable = false)
     private UUID idSeller;
+    @Column(name = "CATEGORY", nullable = false)
     private String category;
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+    @Column(name = "VALUE", nullable = false)
     private Float value;
+    @Column(name = "IMAGE", nullable = false)
     private String Image;
-
+    public String getImage() {
+        return Image;
+    }
+    public void setImage(String image) {
+        Image = image;
+    }
     public UUID getId() {
         return id;
     }
