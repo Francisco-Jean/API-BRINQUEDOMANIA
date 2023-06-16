@@ -30,22 +30,22 @@
     <hr>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nome de usuário</label>
-        <div class="input-group">
+        
           <input type="text" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="username" placeholder="Usuário">
           
         
         
         <div class="form-text text-danger" *ngIf="isFormControlInvalid('username')">O nome de usuário deve conter pelo menos 6 caracteres</div>
-      </div>
+      
       </div>
 
       <div class="mb-3">
         <label for="InputPassword1" class="form-label">Senha</label> 
-        <div class="input-group">    
+        
         <input type="password" class="form-control" id="InputPassword1" formControlName="password" placeholder="Senha">
 
         <div class="form-text text-danger" *ngIf="isFormControlInvalid('password')">A senha deve conter pelo menos 6 caracteres</div>
-        </div>  
+         
       </div>
      
          <div class="mb-3 form-check">
