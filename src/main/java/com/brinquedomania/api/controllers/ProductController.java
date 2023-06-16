@@ -10,12 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.Optional;
-
+import java.util.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired
@@ -34,8 +32,9 @@ public class ProductController {
     public ResponseEntity<Object> getOneProductById(@PathVariable(value = "id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if (product0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(product0.get());
     }
+    //IMPLEMENTACAO PUT E DELETE (BIA)
 }

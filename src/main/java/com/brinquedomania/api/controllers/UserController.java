@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -35,7 +36,7 @@ public class UserController {
         if (user0 == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
         }
-        return ResponseEntity.status(HttpStatus.OK).body(user0.getIdentifier());
+        return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByIdentifier(identifier));
     }
 
     @PutMapping("/user/edit/{identifier}")

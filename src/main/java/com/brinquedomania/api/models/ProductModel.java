@@ -17,6 +17,7 @@ public class ProductModel implements Serializable {
     private String category;
     private String description;
     private Float value;
+    private String Image;
 
     public UUID getId() {
         return id;
