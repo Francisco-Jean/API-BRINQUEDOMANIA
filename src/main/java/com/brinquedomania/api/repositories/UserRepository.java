@@ -10,9 +10,8 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, UUID> {
      UserModel findByIdentifier(String identifier);
-     UserModel findById(String identifier);
+
      Optional<UserModel> findById(UUID id);
 
-     @Query("SELECT * FROM tb_users WHERE email = :email AND password = :password")
-     UserModel findLogin(String email, String password);
+     UserModel findByEmail(String email);
 }

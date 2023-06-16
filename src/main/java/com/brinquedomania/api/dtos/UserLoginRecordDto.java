@@ -5,4 +5,4 @@ import jakarta.validation.constraints.NotBlank;
 
 public record UserLoginRecordDto(@Email String email,
                             @NotBlank String password) {
-                            }
+}
