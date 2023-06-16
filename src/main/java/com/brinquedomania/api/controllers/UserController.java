@@ -20,6 +20,20 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody @Valid UserLoginRecordDto user){
+        String email = user.getEmail();
+        String senha = user.getPassword();
+        UserModel user0 = userRepository.findLogin(email, password);
+
+        if (user0 == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(user0);
+    }
+
     @PostMapping("/user/register")
     public ResponseEntity<UserModel> saveUser(@RequestBody @Valid UserRecordDto userRecordDto) {
         var userModel = new UserModel();
