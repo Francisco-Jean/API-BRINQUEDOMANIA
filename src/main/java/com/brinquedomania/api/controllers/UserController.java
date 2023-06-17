@@ -25,9 +25,9 @@ public class UserController {
 
     @PostMapping("user/login")
     public ResponseEntity<Object> login(@RequestBody @Valid UserLoginRecordDto userLoginRecordDto){
-        String email = userLoginRecordDto.email();
+        String username = userLoginRecordDto.email();
         String senha = userLoginRecordDto.password();
-        UserModel user0 = userRepository.findByEmail(email);
+        UserModel user0 = userRepository.findByEmail(username);
 
         if (user0 == null || !Objects.equals(user0.getPassword(), senha)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
