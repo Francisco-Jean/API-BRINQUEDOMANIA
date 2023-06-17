@@ -18,7 +18,7 @@ public class ProductController {
 
     @Autowired
     ProductRepository productRepository;
-    @PostMapping("/login")
+    @PostMapping("/product/register")
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
         var productModel = new ProductModel();
         BeanUtils.copyProperties(productRecordDto, productModel);
@@ -36,5 +36,24 @@ public class ProductController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(product0.get());
     }
-    //IMPLEMENTACAO PUT E DELETE (BIA)
+    @PutMapping("/product/edit/{id}")
+    public ResponseEntity<Object> updateUser(@PathVariable(value="id") UUID id,
+                                             @RequestBody @Valid ProductRecordDto productRecordDto) {
+        Optional<ProductModel> product0 = productRepository.findById(id);
+        if(product0.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+        }
+        var productModel = product0.get();
+        BeanUtils.copyProperties(productRecordDto, productModel);
+        return ResponseEntity.status(HttpStatus.OK).body(productRepository.save(productModel));
+    }
+    @DeleteMapping("/product/delete/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
+        Optional<ProductModel> product0 = productRepository.findById(id);
+        if(product0.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+        }
+        productRepository.delete(product0.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com sucesso.");
+    }
 }

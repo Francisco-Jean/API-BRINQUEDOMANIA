@@ -23,11 +23,11 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("user/login")
+    @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody @Valid UserLoginRecordDto userLoginRecordDto){
-        String username = userLoginRecordDto.email();
+        String email = userLoginRecordDto.email();
         String senha = userLoginRecordDto.password();
-        UserModel user0 = userRepository.findByEmail(username);
+        UserModel user0 = userRepository.findByEmail(email);
 
         if (user0 == null || !Objects.equals(user0.getPassword(), senha)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
