@@ -7,7 +7,9 @@
       "@angular/*": [
         "node_modules/@angular/*"
       ],
-      "types":["node"]
+      "types":["node"],
+      
+    
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

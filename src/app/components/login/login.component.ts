@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
  
   public criaFormLogin():FormGroup{
     return this.fb.group({
-      username:["",[Validators.required, Validators.minLength(6)]],
+      email:["",[Validators.required, Validators.minLength(6), Validators.email]],
       password:["",[Validators.required, Validators.minLength(6)]],
     })
   }
@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
   }
 
   public submitForm(){
-    const {username, password} = this.formLogin.value;
+    const {email, password} = this.formLogin.value;
     this.formLogin.reset();
 
-    this.loginService.login(username, password).subscribe(
+    this.loginService.login(email, password).subscribe(
       res =>{
          this.toast.success("Login efetuado com sucesso!");
          this.route.navigate(['']);

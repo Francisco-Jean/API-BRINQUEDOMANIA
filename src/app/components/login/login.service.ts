@@ -15,11 +15,11 @@ export class LoginService{
  
     }
 
-    public login(username:string, password:string): Observable<any>{
+    public login(email:string, password:string): Observable<any>{
               
-       const url = `${environment.baseUrlBackend}/login`;
+       const url = `${environment.baseUrlBackend}/user/login`;
        
-       return this.httpClient.post( url,{username, password}, {responseType:'json'}).pipe(
+       return this.httpClient.post( url,{email, password}, {responseType:'json'}).pipe(
             map((data) => this.setTokenLocalStorage(data)),
 
            catchError((err)=>{

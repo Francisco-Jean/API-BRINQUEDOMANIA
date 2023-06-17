@@ -29,13 +29,13 @@
   <form [formGroup]="formLogin" >
     <hr>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Nome de usuário</label>
+        <label for="exampleInputEmail1" class="form-label">E-mail</label>
         
-          <input type="text" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="username" placeholder="Usuário">
+          <input type="text" class="form-control" id="InputEmail1" aria-describedby="emailHelp" formControlName="email" placeholder="E-mail">
           
         
         
-        <div class="form-text text-danger" *ngIf="isFormControlInvalid('username')">O nome de usuário deve conter pelo menos 6 caracteres</div>
+        <div class="form-text text-danger" *ngIf="isFormControlInvalid('email')">O nome de usuário deve conter pelo menos 6 caracteres</div>
       
       </div>
 
