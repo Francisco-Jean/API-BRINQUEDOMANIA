@@ -6,10 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-       
+        
+      
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -21,27 +19,55 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+       
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-      </ul>
-      
-      <div class="search-container">
+
+        <div class="search-container">
 
          <form class="d-flex " role="search">
-        <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2 " type="search" placeholder="Buscar Produto" aria-label="Search">
+        <button class="btn btn-light" type="submit">Pesquisar</button>
       </form>
       </div>
      
-    </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item1">
+          <a class="nav-link" href="#" class="link1"><img id="trem"src="assets/trem.png" alt=""><h4>Carrinho de compras </h4></a>
+        </li>
+        </ul>
+<!--   -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item2">
+          <a class="nav-link" href="login" class="link2"><img id="peca"src="assets/peca.png" alt=""><h4>Entre ou<br>cadastre-se </h4></a>
+        </li>
+        </ul>
+
+     
+      </div>
   </div>
 </nav>
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="assets/peca.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="assets/trator.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="assets/trem.png" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
   <router-outlet>
 
   </router-outlet>

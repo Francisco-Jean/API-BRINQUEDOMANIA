@@ -17,7 +17,8 @@ export class LoginService{
 
     public login(email:string, password:string): Observable<any>{
               
-       const url = `${environment.baseUrlBackend}/user/login`;
+       //const url = `${environment.baseUrlBackend}/user/login`;
+       const url = `${environment.baseUrlBackend}/login`;
        
        return this.httpClient.post( url,{email, password}, {responseType:'json'}).pipe(
             map((data) => this.setTokenLocalStorage(data)),

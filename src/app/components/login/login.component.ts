@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(email, password).subscribe(
       res =>{
          this.toast.success("Login efetuado com sucesso!");
-         this.route.navigate(['']);
+         this.route.navigate(['home']);
       },
       err =>(
         this.toast.error(err)
