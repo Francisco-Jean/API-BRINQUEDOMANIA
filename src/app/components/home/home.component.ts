@@ -1,8 +1,8 @@
 
 import { LoginService } from './../login/login.service';
 import { Component, OnInit } from '@angular/core';
-//import { LoginService } from 'LoginService';
 import { Router } from '@angular/router';
+import { type } from 'os';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +11,15 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  name:any;
+  name:string | null;
+  type:string | null;
+  id:string | null
   constructor(private loginService:LoginService,private route:Router) {
 
-  this.name = this.loginService.getName();
-
+  const{name, type, id } = this.loginService.getData();
+  this.name = name
+  this.type = type
+  this.id = id
  }
   ngOnInit(): void {
   }

@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   baseUrlBackend:'http://localhost:8080',
   id:'id',
-  name:'name'
+  name:'name',
+  type:'type'
 };
 
 /*

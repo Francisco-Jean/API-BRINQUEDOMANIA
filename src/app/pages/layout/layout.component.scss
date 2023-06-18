@@ -8,7 +8,7 @@
 
 .search-container{
     display:flex;
-    justify-content:center;
+   
     
     flex-grow: 1;
     flex-shrink: 3;
@@ -24,13 +24,13 @@
   margin-left: -340px;
   font-size: 24px;
   color: aliceblue;
-  
+  text-decoration: none;
   
 }
-.link2{
+.link2 {
   font-size: 24px;
   color: aliceblue;
-  
+  text-decoration: none;
   
 }
 
@@ -44,6 +44,8 @@
    float: left;
   margin-left: -70px;
 }
+
+
 
 
 

@@ -20,7 +20,7 @@ const routes: Routes = [
   component: CadastroComponent
  },
  
-
+/*
  {
   path:'', component:LayoutComponent,
   children:[
@@ -31,6 +31,8 @@ const routes: Routes = [
   ]
 
 },
+*/
+
 // Redirecionar para a home se nenhuma url
 // for encontrada
 {

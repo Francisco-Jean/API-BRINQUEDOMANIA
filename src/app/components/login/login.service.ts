@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError, map} from 'rxjs/operators';
 import { environment } from "src/environments/environment";
-import { error } from "console";
+//import { error } from "console";
 
 @Injectable({
     providedIn:'root',
@@ -21,11 +21,11 @@ export class LoginService{
        const url = `${environment.baseUrlBackend}/login`;
        
        return this.httpClient.post( url,{email, password}, {responseType:'json'}).pipe(
-            map((data) => this.setIdLocalStorage(data) ),
+            map((data) => this.setDataLocalStorage(data) ),
             
 
            catchError((err)=>{
-            this.removerIdLocalStorage();
+            this.removerDataLocalStorage();
             const errorMessage = 'Falha ao efetuar Login';
             console.error(errorMessage, err); // Log the error for debugging purposes
             throw new Error(errorMessage);
@@ -34,27 +34,32 @@ export class LoginService{
     }
 
 
-   public getId():string | null{
-       return localStorage.getItem(environment.id);
-   }
-   private setIdLocalStorage(response: any):void{
-              const { type, id, _} = response;
-
-              localStorage.setItem(environment.id, id);
+   private setDataLocalStorage(response: any):void{
+        
+        const { type, id, name} = response;
+        localStorage.setItem(environment.type, type);
+        localStorage.setItem(environment.id, id);
+        localStorage.setItem(environment.name, name);
+              
               
    }
 
-   private removerIdLocalStorage():void{
-             localStorage.removeItem(environment.id);
+   private removerDataLocalStorage():void{
+     
+    localStorage.removeItem(environment.name),
+     localStorage.removeItem(environment.type), 
+     localStorage.removeItem(environment.id) 
+
    }
 
-   private setNameLocalStorage(response:any):void{
-      const {type, name, _} = response;
-      localStorage.setItem(environment.name,name)
+
+
+   public getData():{name:string | null; type:string | null;id :string | null;}{
+    
+       return {
+       name: localStorage.getItem(environment.name),
+       type: localStorage.getItem(environment.type), 
+       id: localStorage.getItem(environment.id), 
+       } ;
    }
-   public getName():string | null{
-    return localStorage.getItem(environment.name);
-}
-
-
 }
