@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseUrlBackend:'http://localhost:8080',
-  token:'token'
+  id:'id',
+  name:'name'
 };
 
 /*

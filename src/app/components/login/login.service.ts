@@ -21,10 +21,11 @@ export class LoginService{
        const url = `${environment.baseUrlBackend}/login`;
        
        return this.httpClient.post( url,{email, password}, {responseType:'json'}).pipe(
-            map((data) => this.setTokenLocalStorage(data)),
+            map((data) => this.setIdLocalStorage(data) ),
+            
 
            catchError((err)=>{
-            this.removerTokenLocalStorage();
+            this.removerIdLocalStorage();
             const errorMessage = 'Falha ao efetuar Login';
             console.error(errorMessage, err); // Log the error for debugging purposes
             throw new Error(errorMessage);
@@ -32,15 +33,28 @@ export class LoginService{
         )
     }
 
-   public getToken():string | null{
-       return localStorage.getItem(environment.token);
+
+   public getId():string | null{
+       return localStorage.getItem(environment.id);
    }
-   private setTokenLocalStorage(response: any):void{
-              const { type, token, _} = response;
-              localStorage.setItem(environment.token, token);
+   private setIdLocalStorage(response: any):void{
+              const { type, id, _} = response;
+
+              localStorage.setItem(environment.id, id);
+              
    }
 
-   private removerTokenLocalStorage():void{
-             localStorage.removeItem(environment.token);
+   private removerIdLocalStorage():void{
+             localStorage.removeItem(environment.id);
    }
+
+   private setNameLocalStorage(response:any):void{
+      const {type, name, _} = response;
+      localStorage.setItem(environment.name,name)
+   }
+   public getName():string | null{
+    return localStorage.getItem(environment.name);
+}
+
+
 }

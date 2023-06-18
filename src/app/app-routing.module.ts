@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
+import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
 
 const routes: Routes = [
  {
@@ -32,6 +33,10 @@ const routes: Routes = [
 },
 // Redirecionar para a home se nenhuma url
 // for encontrada
+{
+  path: 'carrinho',
+  component: CarrinhoComprasComponent
+ },
 {
   path:'**', redirectTo:'home'
 }
