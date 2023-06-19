@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
+import { SellerComponent } from './private/seller/seller.component';
+import { AutorizadoGuard } from './_guard/autorizado.guard';
+//import { authguardGuard } from './auth/authguard.guard';
 
 const routes: Routes = [
  {
@@ -39,6 +42,13 @@ const routes: Routes = [
   path: 'carrinho',
   component: CarrinhoComprasComponent
  },
+ {
+  path: 'seller',
+  component: SellerComponent,
+  canActivate:[AutorizadoGuard]
+ },
+
+
 {
   path:'**', redirectTo:'home'
 }

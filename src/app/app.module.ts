@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
+import { SellerComponent } from './private/seller/seller.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho
     HomeComponent,
     LayoutComponent,
     CadastroComponent,
-    CarrinhoComprasComponent
+    CarrinhoComprasComponent,
+    SellerComponent
   ],
   imports: [
     BrowserModule,

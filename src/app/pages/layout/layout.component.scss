@@ -22,14 +22,13 @@
 .link1{
   float: left;
   margin-left: -340px;
-  font-size: 24px;
-  color: aliceblue;
+ 
   text-decoration: none;
   
 }
 .link2 {
-  font-size: 24px;
-  color: aliceblue;
+  float: left;
+  margin-left: -10px;
   text-decoration: none;
   
 }
@@ -42,11 +41,24 @@
 
 #peca{
    float: left;
-  margin-left: -70px;
+  margin-left: -65px;
+}
+#bola{
+  float:left;
+  //margin-left: -80px;
 }
 
+.btn-info{
+  background-color:  #8bb9e2;
+  color: aliceblue;
+  font-size: 23px;
+  border: #8bb9e2;
+}
 
-
+.btn-info:hover{
+  
+  background-color: rgb(39, 143, 241);
+}
 
 
 

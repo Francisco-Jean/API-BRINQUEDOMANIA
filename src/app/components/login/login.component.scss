@@ -56,7 +56,12 @@
 .custom-link{
   font-size: 20px;
   color:#f6f9fc;
+  text-decoration: none;
 }
+.custom-link:hover{
+  color: #04335c;
+}
+
 
 .form-label{
   font-size: 20px;

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-
-//import { LoginService } from './../components/login/login.service';
+import { LoginService } from './../../components/login/login.service';
 
 
 @Component({
@@ -10,6 +9,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
+  name:string | null;
+  type:string | null;
+  id:string | null
 
+constructor(private loginService:LoginService){
+  const{name, type, id } = this.loginService.getData();
+  this.name = name
+  this.type = type
+  this.id = id
+}  
 
+logOut(){
+  localStorage.clear()
+  }
 }

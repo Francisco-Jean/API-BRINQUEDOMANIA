@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   name:string | null;
   type:string | null;
-  id:string | null
+  id:string | null;
   constructor(private loginService:LoginService,private route:Router) {
 
   const{name, type, id } = this.loginService.getData();
