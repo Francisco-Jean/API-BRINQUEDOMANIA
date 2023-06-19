@@ -14,7 +14,7 @@ public class UserModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Column(name = "TYPE", nullable = false)
     private String type;
     @Column(name = "EMAIL", nullable = false, unique = true)
@@ -23,18 +23,19 @@ public class UserModel implements Serializable {
     private String password;
     @Column(name = "NAME", nullable = false)
     private String name;
-    @Column(name = "ADRESS", nullable = false)
-    private String adress;
+    @Column(name = "ADDRESS", nullable = false)
+    private String address;
     @Column(name = "BIRTH_DATE", nullable = false)
     private Date birthDate;
     @Column(name = "IDENTIFIER", nullable = false, unique = true)
     private String identifier;
 
-    public UUID getId() {
+
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -70,12 +71,12 @@ public class UserModel implements Serializable {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getBirthDate() {

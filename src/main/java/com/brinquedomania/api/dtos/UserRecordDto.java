@@ -7,5 +7,5 @@ import java.util.Date;
 
 public record UserRecordDto(@NotBlank String name, @Email String email,
                             @NotBlank String password, @NotBlank String identifier,
-                            String adress, Date birthDate, String type) {
+                            String address, Date birthDate, String type) {
 }

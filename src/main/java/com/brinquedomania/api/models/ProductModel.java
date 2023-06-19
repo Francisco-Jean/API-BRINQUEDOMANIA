@@ -2,8 +2,8 @@ package com.brinquedomania.api.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @Table(name = "TB_PRODUCTS")
@@ -12,10 +12,10 @@ public class ProductModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "ID_PRODUCT", nullable = false)
-    private UUID id;
+    private Long id;
+
     @Column(name = "ID_SELLER", nullable = false)
-    private UUID idSeller;
+    private Long idSeller;
     @Column(name = "CATEGORY", nullable = false)
     private String category;
     @Column(name = "DESCRIPTION", nullable = false)
@@ -23,26 +23,22 @@ public class ProductModel implements Serializable {
     @Column(name = "VALUE", nullable = false)
     private Float value;
     @Column(name = "IMAGE", nullable = false)
-    private String Image;
-    public String getImage() {
-        return Image;
-    }
-    public void setImage(String image) {
-        Image = image;
-    }
-    public UUID getId() {
+    private String imageLink;
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public UUID getIdSeller() {
+    public Long getIdSeller() {
         return idSeller;
     }
 
-    public void setIdSeller(UUID idSeller) {
+    public void setIdSeller(Long idSeller) {
         this.idSeller = idSeller;
     }
 
@@ -68,5 +64,13 @@ public class ProductModel implements Serializable {
 
     public void setValue(Float value) {
         this.value = value;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 }
