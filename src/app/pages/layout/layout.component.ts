@@ -19,8 +19,15 @@ constructor(private loginService:LoginService){
   this.type = type
   this.id = id
 }  
+loggedOut():boolean{
+ if(this.name==undefined ||this.type == undefined || this.id == undefined ){
+  return true
+ }
+  return false
+}
 
 logOut(){
   localStorage.clear()
+
   }
 }
