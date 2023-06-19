@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Table(name = "TB_PRODUCTS")
@@ -12,10 +13,9 @@ public class ProductModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private UUID id;
     @Column(name = "ID_SELLER", nullable = false)
-    private Long idSeller;
+    private UUID idSeller;
     @Column(name = "CATEGORY", nullable = false)
     private String category;
     @Column(name = "DESCRIPTION", nullable = false)
@@ -26,19 +26,19 @@ public class ProductModel implements Serializable {
     private String imageLink;
 
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getIdSeller() {
+    public UUID getIdSeller() {
         return idSeller;
     }
 
-    public void setIdSeller(Long idSeller) {
+    public void setIdSeller(UUID idSeller) {
         this.idSeller = idSeller;
     }
 

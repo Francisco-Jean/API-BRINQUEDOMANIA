@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "TB_SALES")
@@ -13,48 +14,46 @@ public class SaleModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
 
-    private Long idSeller;
-    private Long idClient;
-
-    @ElementCollection
-    @CollectionTable(name = "PRODUCTS", joinColumns = @JoinColumn(name = "id"))
-    private List<Long> idsProducts;
-
+    private UUID idSeller;
+    private UUID idClient;
     private Float amount;
     private Date date;
 
+    @ElementCollection
+    @CollectionTable(name = "PRODUCTS", joinColumns = @JoinColumn(name = "id"))
+    private List<UUID> idsProducts;
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getIdSeller() {
+    public UUID getIdSeller() {
         return idSeller;
     }
 
-    public void setIdSeller(Long idSeller) {
+    public void setIdSeller(UUID idSeller) {
         this.idSeller = idSeller;
     }
 
-    public Long getIdClient() {
+    public UUID getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(Long idClient) {
+    public void setIdClient(UUID idClient) {
         this.idClient = idClient;
     }
 
-    public List<Long> getIdsProducts() {
+    public List<UUID> getIdsProducts() {
         return idsProducts;
     }
 
-    public void setIdsProducts(List<Long> idsProducts) {
+    public void setIdsProducts(List<UUID> idsProducts) {
         this.idsProducts = idsProducts;
     }
 

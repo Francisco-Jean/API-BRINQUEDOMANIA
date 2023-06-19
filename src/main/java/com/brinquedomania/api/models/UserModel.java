@@ -14,7 +14,7 @@ public class UserModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private UUID id;
     @Column(name = "TYPE", nullable = false)
     private String type;
     @Column(name = "EMAIL", nullable = false, unique = true)
@@ -31,11 +31,11 @@ public class UserModel implements Serializable {
     private String identifier;
 
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
