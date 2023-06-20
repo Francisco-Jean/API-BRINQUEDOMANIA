@@ -15,16 +15,16 @@ type:string | null;
     this.type = type
 
   }
+  isAuth():boolean{
+    if(this.type ==='Seller' ){
+      
+      return true
+    }
+    return false
+  }
 
   canActivate(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
-      if(this.type ==='Seller' ){
-      
-        return true
-    }
-    else{
- return false
-    }
-   
+    return this.isAuth()
 
 }
 }

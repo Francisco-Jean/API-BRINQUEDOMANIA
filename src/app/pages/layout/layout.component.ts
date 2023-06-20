@@ -30,4 +30,13 @@ logOut(){
   localStorage.clear()
 
   }
+
+ public isSeller():boolean{
+  if(this.type =="Seller" ){
+        
+    return true
+ }
+ return false
+
+ } 
 }

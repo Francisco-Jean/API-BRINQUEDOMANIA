@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
   public isFormControlInvalid(controlName:string):boolean{
     return !!(this.formLogin.get(controlName)?.invalid && this.formLogin.get(controlName)?.touched )
   }
+  
+
 
   public submitForm(){
     const {email, password} = this.formLogin.value;
@@ -45,16 +47,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(email, password).subscribe(
       res =>{
          this.toast.success("Login efetuado com sucesso!");
-
       
-          
-         
-         
-       if(this.tipo =="Seller" ){
-        
-          this.route.navigate(['seller'])
-                  }
-      else
       this.route.navigate(['home']);
        
          
