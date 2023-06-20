@@ -1,12 +1,14 @@
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+
 import { LoginService } from '.././components/login/login.service';
 
 @Injectable()
-export class AutorizadoGuard implements CanActivate {
+export class AutorizadoGuard  implements CanActivate{
 type:string | null;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, ) {
 
     const{ name,type,id} = this.loginService.getData()
     
@@ -14,14 +16,15 @@ type:string | null;
 
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-  
-    if(this.type ==='seller' ){
-        this.router.navigate(['/seller'])
+  canActivate(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
+      if(this.type ==='Seller' ){
+      
         return true
     }
-    
-    this.router.navigate(['/home'])
-    return false
+    else{
+ return false
+    }
+   
+
 }
 }

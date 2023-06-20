@@ -39,9 +39,9 @@
    </li> 
     </ul>
 
-      <ul class="navbar-nav ml-auto">
+      <ul  [hidden]="!loggedOut()"  class="navbar-nav ml-auto">
         <li class="nav-item2">
-          <a class="nav-link" href="login" class="link2"><img id="peca"src="assets/peca.png" alt=""><span class="btn btn-info">Entre ou<br>cadastre-se </span></a>
+          <a  class="nav-link" href="login" class="link2"><img id="peca"src="assets/peca.png" alt=""><span class="btn btn-info">Entre ou<br>cadastre-se </span></a>
         </li>
       </ul>
  
