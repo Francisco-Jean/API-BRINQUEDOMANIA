@@ -24,47 +24,66 @@
           </div>
          </div>
          <div class="card-body">
-    <form  >
+    <form   >
       <hr>
-        <div class="mb-3">
+        <div class="form-group">
           <label for="exampleInputEmail1" class="form-label">Qual o seu nome?</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="InputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nome">
+            <input type="text" [(ngModel)]="name"  class="form-control" id="InputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nome">
+
+
+
 
         </div>
 
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"> Nome de Usuário:</label>
+       <div class="form-group">
+          <label for="exampleInputEmail1" class="form-label">E-mail:</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" formControlName="usename" placeholder="Nome de usuário">
+            <input type="text" [(ngModel)]="email" class="form-control" id="InputUsername" aria-describedby="emailHelp" formControlName="email" placeholder="Nome de usuário">
 
         </div>
 
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">CPF/CNPJ:</label>
+       <div class="form-group">
+          <label for="InputIdentifier" class="form-label">CPF/CNPJ:</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="InputCPF" aria-describedby="emailHelp" formControlName="cpf" placeholder="cpf / cnpj">
+            <input type="text" [(ngModel)]="identifier" class="form-control" id="InputCPF" aria-describedby="emailHelp" formControlName="identifier" placeholder="cpf / cnpj">
 
         </div>
 
         </div>
-         
+      
+      <div class="form-group">
+        <label for="InputAddress" class="form-label">Endereço:</label>
+        <div class="input-group">
+          <input type="text" [(ngModel)]="address" class="form-control" id="Inputaddress" aria-describedby="emailHelp" formControlName="adress" placeholder="Endereço">
+
+      </div>
+
+      </div>
+       <div class="form-group">
+        <label for="InputAddress" class="form-label">Data de nascimento:</label>
+        <div class="input-group">
+          <input type="date" [(ngModel)]="birthDate" class="form-control" id="birthDate" aria-describedby="emailHelp" formControlName="birthDate" placeholder="">
+
+      </div>
+
+      </div>
   
-        <div class="mb-3">
-          <label for="InputPassword1" class="form-label">Digite sua Senha</label> 
+      <div class="form-group">
+          <label for="InputPassword" class="form-label">Digite sua Senha</label> 
           <div class="input-group">    
-          <input type="password" class="form-control" id="InputPassword1" formControlName="password" placeholder="Senha">
+          <input type="password" [(ngModel)]="password" class="form-control" id="InputPassword1" formControlName="password" placeholder="Senha">
   
-          
+         
           </div>  
         </div>
+     <!--     -->  
        
         
         
-        
-        <button type="submit" class="btn btn-primary" >Cadastrar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()" >Cadastrar</button>
       </form>
          </div>
          

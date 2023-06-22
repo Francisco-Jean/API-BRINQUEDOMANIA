@@ -7,7 +7,13 @@ export const environment = {
   baseUrlBackend:'http://localhost:8080',
   id:'id',
   name:'name',
-  type:'type'
+  type:'type',
+  
+  email:'email',
+  birthDate:'birthDate',
+  address:'address',
+  identifier:'identifier',
+  password: 'password',
 };
 
 /*

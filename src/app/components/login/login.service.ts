@@ -26,9 +26,8 @@ export class LoginService{
 
            catchError((err)=>{
             this.removerDataLocalStorage();
-            const errorMessage = 'Falha ao efetuar Login';
-            console.error(errorMessage, err); // Log the error for debugging purposes
-            throw new Error(errorMessage);
+
+            throw 'Falha ao efetuar Login'
         })
         )
     }
