@@ -1,5 +1,5 @@
 
-<nav class="navbar">
+<nav class="navbar fixed-navbar">
     <div class="container">
       <div class="nav navbar-nav mx-auto" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="home"><img src="assets/icon.png" alt=""></a>
@@ -24,66 +24,76 @@
           </div>
          </div>
          <div class="card-body">
-    <form   >
+    <form  [formGroup]="formCadastro" >
       <hr>
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="form-label">Qual o seu nome?</label>
-          <div class="input-group">
-            <input type="text" [(ngModel)]="name"  class="form-control" id="InputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nome">
-
-
-
-
-        </div>
-
-        </div>
-       <div class="form-group">
-          <label for="exampleInputEmail1" class="form-label">E-mail:</label>
-          <div class="input-group">
-            <input type="text" [(ngModel)]="email" class="form-control" id="InputUsername" aria-describedby="emailHelp" formControlName="email" placeholder="Nome de usuário">
-
-        </div>
-
-        </div>
-       <div class="form-group">
-          <label for="InputIdentifier" class="form-label">CPF/CNPJ:</label>
-          <div class="input-group">
-            <input type="text" [(ngModel)]="identifier" class="form-control" id="InputCPF" aria-describedby="emailHelp" formControlName="identifier" placeholder="cpf / cnpj">
-
-        </div>
-
-        </div>
       
-      <div class="form-group">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Qual o seu nome?</label>
+          
+            <input type="text" [(ngModel)]="name"  class="form-control" id="InputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nome">
+            <div class="form-text text-danger" *ngIf="formCadastro.controls['name'].errors?.['required']"> O nome é obrigatório</div>
+           
+
+        </div>
+        
+       <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">E-mail:</label>
+          
+            <input type="text" [(ngModel)]="email" class="form-control" id="InputUsername" aria-describedby="emailHelp" formControlName="email" placeholder="Nome de usuário">
+          
+            <div class="form-text text-danger" *ngIf="formCadastro.controls['email'].errors?.['required']"> O e-mail é obrigatório</div>
+             <div class="form-text text-danger" *ngIf="formCadastro.controls['email'].errors?.['email']">O e-mail fonecido não é válido</div>
+          </div>
+
+     
+       <div class="mb-3">
+          <label for="InputIdentifier" class="form-label">CPF/CNPJ:</label>
+         
+            <input type="text" [(ngModel)]="identifier" class="form-control" id="InputCPF" aria-describedby="identifierHelp" formControlName="identifier" placeholder="Digite apenas números">
+           <!-- <div class="form-text text-danger" *ngIf="formCadastro.controls['identifier'].errors?.['required']"> O CPF ou CNPJ é obrigatório</div>            
+           -->  <div class="form-text text-danger" *ngIf="formCadastro.controls['identifier'].errors?.['invalidIdentifier']"> O CPF ou CNPJ está inválido </div>
+        </div>
+
+
+
+   
+      <div class="mb-3">
         <label for="InputAddress" class="form-label">Endereço:</label>
-        <div class="input-group">
-          <input type="text" [(ngModel)]="address" class="form-control" id="Inputaddress" aria-describedby="emailHelp" formControlName="adress" placeholder="Endereço">
-
+        
+          <input type="text" [(ngModel)]="address" class="form-control" id="Inputaddress" aria-describedby="emailHelp" formControlName="address" placeholder="Endereço">
+          <div class="form-text text-danger" *ngIf="formCadastro.controls['address'].errors?.['required']"> O endereço é obrigatório</div>
+          <div class="form-text text-danger" *ngIf="formCadastro.controls['address'].errors?.['minlength']"> O endereço deve conter ao menos 6 dígitos</div>
+           
       </div>
+     
 
-      </div>
-       <div class="form-group">
+      <div class="mb-3">
         <label for="InputAddress" class="form-label">Data de nascimento:</label>
-        <div class="input-group">
+        
           <input type="date" [(ngModel)]="birthDate" class="form-control" id="birthDate" aria-describedby="emailHelp" formControlName="birthDate" placeholder="">
-
+          <div class="form-text text-danger" *ngIf="isFormControlInvalid('birthDate')"> A data de nascimento é obrigatória</div>
+          
       </div>
 
-      </div>
+     
   
-      <div class="form-group">
+      
+  
+      <div class="mb-3">
           <label for="InputPassword" class="form-label">Digite sua Senha</label> 
-          <div class="input-group">    
+           
           <input type="password" [(ngModel)]="password" class="form-control" id="InputPassword1" formControlName="password" placeholder="Senha">
-  
+          <div class="form-text text-danger" *ngIf="formCadastro.controls['password'].errors?.['required']"> A senha é obrigatória</div>
+          <div class="form-text text-danger" *ngIf="formCadastro.controls['password'].errors?.['minlength']"> A senha deve conter ao menos 6 dígitos</div>
+          
          
           </div>  
-        </div>
+        
      <!--     -->  
        
         
         
-        <button type="submit" class="btn btn-primary" (click)="save()" >Cadastrar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formCadastro.valid" (click)="save()" >Cadastrar</button>
       </form>
          </div>
          

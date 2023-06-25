@@ -1,5 +1,6 @@
 
 import { LoginService } from './../login/login.service';
+import {  CadastroComponent } from './../cadastro/cadastro.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { type } from 'os';
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   name:string | null;
   type:string | null;
   id:string | null;
-  constructor(private loginService:LoginService,private route:Router) {
+  constructor(private loginService:LoginService,private route:Router,) {
 
   const{name, type, id } = this.loginService.getData();
   this.name = name

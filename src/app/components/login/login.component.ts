@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
@@ -37,7 +37,9 @@ export class LoginComponent implements OnInit {
   public isFormControlInvalid(controlName:string):boolean{
     return !!(this.formLogin.get(controlName)?.invalid && this.formLogin.get(controlName)?.touched )
   }
-  
+
+ 
+
 
 
   public submitForm(){

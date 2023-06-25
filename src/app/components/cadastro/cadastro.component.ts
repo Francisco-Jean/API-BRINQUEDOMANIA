@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { environment } from "src/environments/environment";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms'
+import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms'
 
 
 
@@ -13,44 +13,69 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms'
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
-
-
-//  public formCadastro:FormGroup;
   
+  public formCadastro:FormGroup
+
+  public name: string="";
+  public address: string="";
+  public identifier: string="";
+  public password: string="";
+  public birthDate = new Date()
+  public email:string=""
 
 
-
-
-
-
-  name: string="";
-  address: string="";
-  identifier: string="";
-  password: string="";
-  birthDate = new Date()
-  email:string=""
-
-  constructor(private http: HttpClient, private toast:ToastrService,private route: Router,private fb:FormBuilder ){
-  //this.formCadastro = this.criaFormCadastro()
+  constructor(private http: HttpClient, private toast:ToastrService,private route: Router,private fb:FormBuilder,  ){
+  this.formCadastro = this.criaFormCadastro()
 
   }
-  /** 
 
+ public validIdentifier(control: AbstractControl): {[key: string]: boolean} | null{
+    const identifierValue : string = control.value;
+    const integerRegex = /^[0-9]+$/;
+    if( integerRegex.test(identifierValue) &&(identifierValue.length === 11 || identifierValue.length === 14) ){
+      return null;
+    } 
+    else{
+      return { 'invalidIdentifier': true};
+    }
+  }
+
+  public validDate(control: AbstractControl): {[key:string]: boolean }| null{
+         const dataValue: string = control.value;
+     if(!dataValue){
+      
+      return{'required':true }
+     
+    }
+      
+     return null;
+   
+    }
+
+    public isFormControlInvalid(controlName:string):boolean{
+      return !!(this.formCadastro.get(controlName)?.invalid || this.formCadastro.get(controlName)?.pristine )
+    }
+  
   public criaFormCadastro():FormGroup{
     return this.fb.group({
-      email:["",[Validators.required, Validators.minLength(6) ]],
+      email:["",[Validators.required, Validators.email ]],
       password:["",[Validators.required, Validators.minLength(6)]],
+      name:["",[Validators.required,  ]],
+      identifier:["",[Validators.required, this.validIdentifier ]],
+      address: ["",[Validators.required, Validators.minLength(6)]],
+      birthDate: ["", this.validDate],
+      
     })
   }
 
- */ 
+  
 
   clearData(){
     this.name="";
     this.address="";
     this.identifier="";
     this.password="";
-    this.birthDate = new Date()
+     this.birthDate = new Date()
     this.email=""
   }
 
@@ -63,13 +88,14 @@ export class CadastroComponent {
           "address":this.address,
           "password":this.password,
            "identifier":this.identifier,
+           "type":"cliente"
       }
    
-       this.http.post(url,bodyData, {responseType:'json'}).subscribe(
+       this.http.post(url,bodyData).subscribe(
          res =>{
           this.toast.success("Cadastro efetuado com sucesso!");
        
-       this.route.navigate(['home']);
+       this.route.navigate(['login']);
         
           
        },
@@ -82,4 +108,6 @@ export class CadastroComponent {
 save(){
   this.register()
 }
+
 }
+

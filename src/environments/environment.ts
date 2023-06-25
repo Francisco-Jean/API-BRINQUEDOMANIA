@@ -8,7 +8,6 @@ export const environment = {
   id:'id',
   name:'name',
   type:'type',
-  
   email:'email',
   birthDate:'birthDate',
   address:'address',
