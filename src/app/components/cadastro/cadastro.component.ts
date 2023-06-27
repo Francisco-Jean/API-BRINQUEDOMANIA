@@ -66,6 +66,10 @@ export class CadastroComponent {
     public isFormControlInvalid(controlName:string):boolean{
       return !!(this.formCadastro.get(controlName)?.invalid || this.formCadastro.get(controlName)?.pristine )
     }
+
+    public isControlInvalid(controlName:string):boolean{
+      return !!(this.formCadastro.get(controlName)?.invalid && this.formCadastro.get(controlName)?.touched )
+    }
   
   public criaFormCadastro():FormGroup{
     return this.fb.group({

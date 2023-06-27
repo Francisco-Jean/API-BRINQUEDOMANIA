@@ -24,38 +24,51 @@
           </div>
          </div>
          <div class="card-body">
-    <form >
+    <form [formGroup] = "formCadastroProduto">
       <hr>
         <div class="mb-3">
           <label for="InputName" class="form-label">Nome do Produto:</label>
           
-            <input type="text" class="form-control" id="InputName" aria-describedby="" formControlName="name" placeholder="Nome">
+            <input type="text" [(ngModel)]="name" class="form-control" id="InputName" aria-describedby="" formControlName="name" placeholder="Nome">
 
         </div>
 
         <div class="mb-3">
-          <label for="Inpucategory" class="form-label">Categoria: </label>
+          <label for="InputCategoria" class="form-label">Categoria:</label>
+         <select class="form-select form-control" [(ngModel)]="category" formControlName="category" aria-label="Default select example">
           
-            <input type="text" class="form-control" id="Name" aria-describedby="" formControlName="category" placeholder="Categoria">
-
+          <option selected>Escolha a categoria</option>
+          <option value="Bonecos">Bonecos</option>
+          <option value="Jogos de Tabuleiro">Jogos de Tabuleiro</option>
+          <option value="Carrinhos">Carrinhos</option>
+          <option value="Instrumentos Musicais">Instrumentos Musicais</option>
+          <option value="Esportes">Esportes</option>
+        </select>
         </div>
+
+       
 
         <div class="mb-3">
           <label for="Inputvalue" class="form-label">Valor do Produto:</label>
           
-            <input type="text" class="form-control" id="Value" aria-describedby="" formControlName="category" placeholder="Preço">
+            <input type="text" [(ngModel)]="value" class="form-control" id="Inputvalue" aria-describedby="" formControlName="value" placeholder="Preço">
 
         </div>
 
         
         <div class="mb-3">
-          <label for="Inputdescription" class="form-label">Descrição do Produto</label>
+          <label for="Inputdescription"  class="form-label">Descrição do Produto</label>
           
-            <input type="text" class="form-control" id="Value" aria-describedby="" formControlName="description" placeholder="Descrição">
+            <input type="text" [(ngModel)]="description" class="form-control" id="Inputdescription" aria-describedby="" formControlName="description" placeholder="Descrição">
 
         </div>
 
+     
 
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Imagem do produto</label>
+          <input type="file" class="form-control" [(ngModel)]="imageLink" id="formFile" formControlName="imageLink" >
+        </div>
 
 
 
@@ -65,7 +78,7 @@
         
         
         
-        <button type="submit" class="btn btn-primary" >Cadastrar</button>
+        <button type="submit" class="btn btn-primary" (click)="save()" >Cadastrar</button>
       </form>
          </div>
          
