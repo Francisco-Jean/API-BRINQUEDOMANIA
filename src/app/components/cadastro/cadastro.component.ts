@@ -4,13 +4,24 @@ import { environment } from "src/environments/environment";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms'
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.scss']
+  styleUrls: ['./cadastro.component.scss'],
+  animations: [
+    trigger('rotate', [
+      state('void', style({ transform: 'rotate(0)' })),
+      transition(':enter', [
+        animate('1s', style({ transform: 'rotate(360deg)' }))
+      ])
+    ])
+  ]
+
+
 })
 export class CadastroComponent {
   

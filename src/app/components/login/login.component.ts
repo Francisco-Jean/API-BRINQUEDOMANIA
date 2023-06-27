@@ -4,12 +4,20 @@ import { FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/for
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-
+import {trigger, state, style, transition, animate} from '@angular/animations'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations:[
+    trigger('fadeIn',[
+      state('void', style({opacity:0})),
+      transition(':enter', [
+        animate('1s', style({opacity:1}))
+      ])
+    ]),]
+  
 })
 export class LoginComponent implements OnInit {
 
