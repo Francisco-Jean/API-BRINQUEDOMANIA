@@ -7,6 +7,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
 import { SellerComponent } from './private/seller/seller.component';
 import { AutorizadoGuard } from './_guard/autorizado.guard';
+import { EditProductComponent } from './private/edit-product/edit-product.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,12 @@ const routes: Routes = [
  {
   path: 'seller',
   component: SellerComponent,
+  canActivate:[AutorizadoGuard]
+ },
+
+ {
+  path: 'editProduct',
+  component: EditProductComponent,
   canActivate:[AutorizadoGuard]
  },
 

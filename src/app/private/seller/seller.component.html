@@ -77,7 +77,7 @@
           <input type="text" [(ngModel)]="imageLink" class="form-control" id="Inputdescription" aria-describedby="" formControlName="imageLink" placeholder="Link da Imagem">
           
           <!--<input type="file" class="form-control"  id="formFile" formControlName="imageLink" >-->
-          <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['value'].errors?.['required']"> A imagem é obrigatória</div>
+          <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['imageLink'].errors?.['required']"> A imagem é obrigatória</div>
           
         </div>
 

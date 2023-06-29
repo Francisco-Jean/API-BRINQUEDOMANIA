@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
 import { SellerComponent } from './private/seller/seller.component';
+import { EditProductComponent } from './private/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SellerComponent } from './private/seller/seller.component';
     LayoutComponent,
     CadastroComponent,
     CarrinhoComprasComponent,
-    SellerComponent
+    SellerComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
