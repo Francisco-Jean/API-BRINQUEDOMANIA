@@ -28,22 +28,25 @@
       <hr>
         <div class="mb-3">
           <label for="InputName" class="form-label">Nome do Produto:</label>
-          
             <input type="text" [(ngModel)]="name" class="form-control" id="InputName" aria-describedby="" formControlName="name" placeholder="Nome">
-
+          <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['name'].errors?.['required']"> O nome é obrigatório</div>
+          <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['name'].errors?.['minlength']"> O nome deve ter ao menos três caracteres</div>
+         
         </div>
 
         <div class="mb-3">
           <label for="InputCategoria" class="form-label">Categoria:</label>
          <select class="form-select form-control" [(ngModel)]="category" formControlName="category" aria-label="Default select example">
           
-          <option selected>Escolha a categoria</option>
+         
           <option value="Bonecos">Bonecos</option>
           <option value="Jogos de Tabuleiro">Jogos de Tabuleiro</option>
           <option value="Carrinhos">Carrinhos</option>
           <option value="Instrumentos Musicais">Instrumentos Musicais</option>
           <option value="Esportes">Esportes</option>
         </select>
+        <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['category'].errors?.['required']">A categoria é obrigatória</div>
+         
         </div>
 
        
@@ -51,8 +54,10 @@
         <div class="mb-3">
           <label for="Inputvalue" class="form-label">Valor do Produto:</label>
           
-            <input type="text" [(ngModel)]="value" class="form-control" id="Inputvalue" aria-describedby="" formControlName="value" placeholder="Preço">
-
+            <input type="text" [(ngModel)]="value" class="form-control" id="Inputvalue" aria-describedby="" formControlName="value" placeholder=" Digite no padrão 00.00">
+            <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['value'].errors?.['required']"> O Valor é obrigatório</div>
+            <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['value'].errors?.['pattern']"> O padrão deve estar como o exemplo: 1000.00 </div>
+           
         </div>
 
         
@@ -60,14 +65,18 @@
           <label for="Inputdescription"  class="form-label">Descrição do Produto</label>
           
             <input type="text" [(ngModel)]="description" class="form-control" id="Inputdescription" aria-describedby="" formControlName="description" placeholder="Descrição">
-
+            <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['description'].errors?.['required']"> A descrição é obrigatória</div>
+            <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['description'].errors?.['minlength']"> A descrição deve ter ao menos dez caracteres</div>
+           
         </div>
 
      
 
         <div class="mb-3">
           <label for="formFile" class="form-label">Imagem do produto</label>
-          <input type="file" class="form-control" [(ngModel)]="imageLink" id="formFile" formControlName="imageLink" >
+          <input type="file" class="form-control" (change)="selectImage($event)" id="formFile" formControlName="imageLink" >
+          <div class="form-text text-danger" *ngIf="formCadastroProduto.controls['value'].errors?.['required']"> A imagem é obrigatória</div>
+          
         </div>
 
 
@@ -78,7 +87,7 @@
         
         
         
-        <button type="submit" class="btn btn-primary" (click)="save()" >Cadastrar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!formCadastroProduto.valid" (click)="save()" >Cadastrar</button>
       </form>
          </div>
          

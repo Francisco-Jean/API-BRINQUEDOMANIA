@@ -31,8 +31,10 @@
           <label for="exampleInputEmail1" class="form-label">Qual o seu nome?</label>
           
             <input type="text" [(ngModel)]="name"  class="form-control" id="InputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nome">
-            <div class="form-text text-danger" *ngIf="formCadastro.controls['name'].errors?.['required']"> O nome é obrigatório</div>
-           
+
+           <div class="form-text text-danger" *ngIf="formCadastro.controls['name'].errors?.['required']"> O nome é obrigatório</div>
+           <div class="form-text text-danger" *ngIf="formCadastro.controls['name'].errors?.['minlength']"> O nome deve ter ao menos três caracteres</div>
+           <div class="form-text text-danger" *ngIf="formCadastro.controls['name'].errors?.['pattern']"> O nome deve conter somente letras</div>
 
         </div>
         
@@ -50,20 +52,21 @@
           <label for="InputIdentifier" class="form-label">CPF/CNPJ:</label>
          
             <input type="text" [(ngModel)]="identifier" class="form-control" id="InputCPF" aria-describedby="identifierHelp" formControlName="identifier" placeholder="Digite apenas números">
-           <!-- <div class="form-text text-danger" *ngIf="formCadastro.controls['identifier'].errors?.['required']"> O CPF ou CNPJ é obrigatório</div>            
-           -->  <div class="form-text text-danger" *ngIf="formCadastro.controls['identifier'].errors?.['invalidIdentifier']"> O CPF ou CNPJ está inválido </div>
-        </div>
-
-
+                 
+           <div class="form-text text-danger" *ngIf="formCadastro.controls['identifier'].errors?.['invalidIdentifier']"> O CPF ou CNPJ está inválido </div>
+ <!--<div class="form-text text-danger" *ngIf="formCadastro.controls['identifier'].errors?.['required']"> O CPF ou CNPJ é obrigatório</div>    -->  
+         
+          </div>
 
    
       <div class="mb-3">
         <label for="InputAddress" class="form-label">Endereço:</label>
         
           <input type="text" [(ngModel)]="address" class="form-control" id="Inputaddress" aria-describedby="emailHelp" formControlName="address" placeholder="Endereço">
-          <div class="form-text text-danger" *ngIf="formCadastro.controls['address'].errors?.['required']"> O endereço é obrigatório</div>
+         
           <div class="form-text text-danger" *ngIf="formCadastro.controls['address'].errors?.['minlength']"> O endereço deve conter ao menos 6 dígitos</div>
-           
+          <div class="form-text text-danger" *ngIf="formCadastro.controls['address'].errors?.['required']"> O endereço é obrigatório</div>
+         
       </div>
      
 
