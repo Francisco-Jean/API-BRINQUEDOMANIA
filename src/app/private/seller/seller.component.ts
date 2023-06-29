@@ -22,7 +22,7 @@ export class SellerComponent {
   public value:string="";
   public description: string="";
   public id: string | null;
- public imageLink: any;
+ public imageLink: string;
 
   constructor(private http: HttpClient, private toast: ToastrService, private route: Router, private fb: FormBuilder, private loginService:LoginService){
     this.formCadastroProduto = this.criaFormCadastro()
@@ -30,14 +30,17 @@ export class SellerComponent {
     const {name, type, id} = this.loginService.getData();
     this.id = id
 
-    this.imageLink = null
+    this.imageLink = ''
   }
 
   // Irá lidar com o evento da seleção do arquivo e irá
   // estabelecer o arquivo no form control:
-     selectImage(event: any){
+  /*
+       selectImage(event: any){
   this.imageLink = event?.target.files[0]
 }
+  */
+
   public criaFormCadastro(): FormGroup{
     return this.fb.group({
      name:["",[Validators.required, Validators.minLength(3) ]],
@@ -51,8 +54,8 @@ export class SellerComponent {
 
 
   public register(){
-    const formData: FormData = new FormData
-    formData.append('imageLink', this.imageLink)
+    //const formData: FormData = new FormData
+    //formData.append('imageLink', this.imageLink)
     
     const url = `${environment.baseUrlBackend}/product/register`;
     let bodyData ={
@@ -61,7 +64,7 @@ export class SellerComponent {
       "value": this.value,
       "description": this.description,
       "idSeller": this.id,
-      "imageLink": formData
+      "imageLink": this.imageLink
 
     }
 
