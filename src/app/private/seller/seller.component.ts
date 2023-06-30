@@ -45,7 +45,7 @@ export class SellerComponent {
     return this.fb.group({
      name:["",[Validators.required, Validators.minLength(3) ]],
      category:["",[Validators.required,  ]],
-     value:["",[Validators.required, Validators.pattern(/^\d{1,5}.\d{2}$/)  ]],
+     value:["",[Validators.required, Validators.pattern(/^\d{1,5}\.\d{2}$/)  ]],
      description:["",[Validators.required, Validators.minLength(10) ]],
      imageLink:["",[Validators.required,  ]],
     })
