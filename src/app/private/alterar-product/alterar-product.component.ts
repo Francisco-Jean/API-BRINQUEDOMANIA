@@ -27,6 +27,7 @@ export class AlterarProductComponent  implements OnInit{
   private buildFormProduct():FormGroup{
       return this.fb.group({
         id:[null, Validators.required],
+        idSeller:[null, Validators.required],
         name:[null,[Validators.required, Validators.minLength(3) ]],
         category:[null,[Validators.required,  ]],
         value:[null,[Validators.required, Validators.pattern(/^\d{1,5}\.\d{2}$/)  ]],
@@ -36,6 +37,9 @@ export class AlterarProductComponent  implements OnInit{
       })
   }
 
+  public isFormControlInvalid(controlName:any):boolean{
+    return !!(this.formProduct.get(controlName)?.invalid && this.formProduct.get(controlName)?.touched )
+  }
 
   ngOnInit(): void {
     
@@ -52,7 +56,7 @@ export class AlterarProductComponent  implements OnInit{
         }
       )
     }
-/**
+
  
    public updateProduct(){
       // Os dados do produto a serem salvos
@@ -60,8 +64,8 @@ export class AlterarProductComponent  implements OnInit{
 
       this.productService.update(product).subscribe(
         res =>(
-          this.formProduct.reset()
-          this.toastr.success(`Produto ${product.description} atualizado!`)
+          this.formProduct.reset(),
+          this.toastr.success(`Produto ${product.description} atualizado!`),
            this.router.navigate(['editProduct'])
           ),
          err =>(
@@ -69,6 +73,6 @@ export class AlterarProductComponent  implements OnInit{
          ) 
       )
     }
- */
+
   
 }

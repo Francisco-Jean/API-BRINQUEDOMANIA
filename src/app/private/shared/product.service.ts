@@ -69,5 +69,18 @@ export class ProductService{
     return(Object.assign(new Product,data))
   }
 
+  public update(product:Product):Observable<Product>{
+    const url = `${environment.baseUrlBackend}/product/edit/${product.id}`
+
+    return this.http.put(url,product).pipe(
+      map(this.mapToProduct)
+    )
+  }
+
+  public delete(productId:string| undefined):Observable<Product>{
+    const url = `${environment.baseUrlBackend}/product/delete/${productId}`
+
+    return this.http.delete(url, {responseType: 'json'})
+  }
 
 }

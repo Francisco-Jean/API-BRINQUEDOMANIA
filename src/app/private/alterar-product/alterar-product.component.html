@@ -20,40 +20,55 @@
          
         </div>
 <br>
-         <form [formGroup]="formProduct">
+         <form [formGroup]="formProduct" (ngSubmit)="updateProduct()">
             <div class="mb-3">
-                <label class="form-label"   >ID:</label>
+                <label class="form-label"   >ID Produto:</label>
                 <input type="text" class="form-control" readonly  formControlName="id">
+            </div>
+            <div class="mb-3">
+                <label class="form-label"   >ID Vendedor:</label>
+                <input type="text" class="form-control" readonly  formControlName="idSeller">
             </div>
             <div class="mb-3">
                 <label class="form-label" >Nome do Produto:</label>
                 <input type="text" class="form-control" placeholder="Nome do Produto" formControlName="name"  >
-           
+                <div class="form-text text-danger" *ngIf="isFormControlInvalid('name')"> O nome é obrigatório e deve ter ao menos três caracteres.</div>
             </div>
             <div class="mb-3">
                 <label class="form-label"   >Categoria:</label>
-                <input type="text" class="form-control" placeholder="Categoria" formControlName="category" >
-           
+                <select class="form-select form-control"  formControlName="category" aria-label="Default select example">
+          
+         
+                <option value="Bonecos">Bonecos</option>
+                <option value="Jogos de Tabuleiro">Jogos de Tabuleiro</option>
+                <option value="Carrinhos">Carrinhos</option>
+                <option value="Instrumentos Musicais">Instrumentos Musicais</option>
+                <option value="Esportes">Esportes</option>
+              </select>
+              <div class="form-text text-danger" *ngIf="isFormControlInvalid('category')">A categoria é obrigatória</div>
+               
+            
             </div>
             <div class="mb-3">
                 <label class="form-label" > Valor:</label>
                 <input type="text" class="form-control" placeholder="Valor" formControlName="value">
-           
+                <div class="form-text text-danger" *ngIf="isFormControlInvalid('value')">O valor é obrigatório e deve estar no padrão: 20.99</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" >Descrição:</label>
                 <input type="text" class="form-control" placeholder="Descrição" formControlName="description">
-           
+                <div class="form-text text-danger" *ngIf="isFormControlInvalid('description')">A descrição é obrigatória e deve ter ao menos dez caracteres</div>
+              
             </div>
             <div class="mb-3">
                 <div class="mb-3">
                     <label class="form-label" >Link da imagem:</label>
                     <input type="text" class="form-control" placeholder="Link" formControlName="imageLink">
-               
+                    <div class="form-text text-danger" *ngIf="isFormControlInvalid('imageLink')">O link é obrigatório </div>
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!formProduct.valid">Salvar</button>
             </div>
           </form>
     </div>

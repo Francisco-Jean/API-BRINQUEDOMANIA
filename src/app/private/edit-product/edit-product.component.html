@@ -61,7 +61,7 @@
                         </a>
                  &nbsp;
               
-                        <a   href="../alteraProduct/{{product.id}}" class="btn btn-sm btn-warning">
+                        <a id="tooltip"  data-bs-toggle="popover" data-bs-placement="top" title="Editar Produto" href="../alteraProduct/{{product.id}}" class="btn btn-sm btn-warning">
    
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
            
@@ -77,12 +77,15 @@
                             </svg>
 
                         </a>
+                        
+                     
+                        
      
               
                         &nbsp;
            
               
-                        <button (click)="removerProduct(product.id)" type="button" class="btn btn-sm btn-danger">
+                        <button (click)="removerProduct(product.id)" id="tooltip"  data-bs-toggle="popover" data-bs-placement="top" title="Remover Produto" type="button" class="btn btn-sm btn-danger">
             
         
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
