@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!--<ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
       
         <li class="nav-item dropdown">
@@ -13,29 +13,26 @@
             Dropdown
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#"> Produtos</a></li>
+            <li><a class="dropdown-item" href="#"> Conta </a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
-       
-      </ul>
+        </li>       
+      </ul> -->
       
 
-        <div class="search-container">
+      <div class="search-container">
 
          <form class="d-flex " role="search">
         <input class="form-control me-2 " type="search" placeholder="Buscar Produto" aria-label="Search">
         <button class="btn btn-light" type="submit">Pesquisar</button>
       </form>
       </div>
-     
-        
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item2">
-          <a [hidden]="!isSeller()" class="nav-link" href="editProduct" class="link5"><img id="editar" src="assets/encaixe.png" alt=""><span class="btn btn-info" >Editar Produtos </span></a>
+          <a [hidden]="!isSeller()" class="nav-link" href="editProduct" class="link5"><img id="editar" src="assets/lapis.png" alt=""><span class="btn btn-info" >Editar Produtos </span></a>
         </li>
       </ul>
      
@@ -49,20 +46,20 @@
           <li class="nav-item1">
   <a class="nav-link" href="carrinho" class="link1">
     <img id="trem" src="assets/trem.png" alt="">
-    <span class="btn btn-info" routerLink="/carrinho">Carrinho de compras</span>
+    <span class="btn btn-info" routerLink="/carrinho"> Minhas compras </span>
   </a>
    </li> 
     </ul>
 
       <ul  [hidden]="!loggedOut()"  class="navbar-nav ml-auto">
         <li class="nav-item2">
-          <a  class="nav-link" href="login" class="link2"><img id="peca"src="assets/peca.png" alt=""><span class="btn btn-info">Entre ou<br>cadastre-se </span></a>
+          <a  class="nav-link" href="login" class="link2"><img id="peca"src="assets/peca.png" alt=""><span class="btn btn-info"> Entre ou cadastre-se </span></a>
         </li>
       </ul>
  
       <ul class="navbar-nav ml-auto">
         <li class="nav-item2">
-          <a [hidden]="loggedOut()" class="nav-link" href="login" class="link3"><img id="bola"src="assets/bola.png" alt="" (click) ="logOut()"  ><span class="btn btn-info"  (click) ="logOut()">Sair </span></a>
+          <a [hidden]="loggedOut()" class="nav-link" href="login" class="link3"><img id="bola"src="assets/logout.png" alt="" (click) ="logOut()"  ><span class="btn btn-info"  (click) ="logOut()"> Sair </span></a>
         </li>
       </ul>
 
