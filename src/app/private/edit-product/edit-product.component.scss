@@ -6,12 +6,17 @@
    
   }
 
-  .gradient-background {
-    width: 100%;
-    
-    height: 160vh;
-    background: linear-gradient(to top, #1b0222, #00198b);
-    //background: linear-gradient(to bottom, #ff0000, #0000ff);
+  .navbar-brand img {
+    width: 100px;
+    height: 80px;
+  }
+
+  .mt-3.mb-3.p-3.card.shadow {
+    background-color: gray;
+  }
+
+  .table {
+    background-color: gray;
   }
 
   .card.shadow {
