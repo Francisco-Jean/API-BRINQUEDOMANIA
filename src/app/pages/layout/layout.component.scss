@@ -1,10 +1,12 @@
 #nav {
+
     background-color: #8bb9e2;
     top: 0;
     width:100%;
     z-index: 4;
-   
+    max-zoom: 100%;
   }
+
 
 .search-container{
     display:flex;
@@ -71,10 +73,10 @@
 
 .link5{
   
-  float: left;
+  float:left;
   margin-left: -740px;
  
-  text-decoration: none;
+  
 }
 .btn-info:hover{
   

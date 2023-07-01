@@ -8,6 +8,7 @@ import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho
 import { SellerComponent } from './private/seller/seller.component';
 import { AutorizadoGuard } from './_guard/autorizado.guard';
 import { EditProductComponent } from './private/edit-product/edit-product.component';
+import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,12 @@ const routes: Routes = [
  {
   path: 'editProduct',
   component: EditProductComponent,
+  canActivate:[AutorizadoGuard]
+ },
+
+ {
+  path: 'alteraProduct/:id',
+  component: AlterarProductComponent,
   canActivate:[AutorizadoGuard]
  },
 

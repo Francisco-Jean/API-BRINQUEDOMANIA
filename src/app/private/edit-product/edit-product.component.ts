@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../shared/product.service'
 import { Product } from '../shared/product.model';
-import { LoginService } from './../../components/login/login.service';
+import { LoginService } from '../../components/login/login.service';
 
 @Component({
   selector: 'app-edit-product',

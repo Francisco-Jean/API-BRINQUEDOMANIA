@@ -11,8 +11,13 @@ import { LoginService } from './../../components/login/login.service';
 })
 
 export class ProductService{
-    public id:string | null 
-    public product:any
+    public name: string ="";
+  public category: string="";
+  public value:string="";
+  public description: string="";
+  public id: string | null;
+ public imageLink: string="";
+    
     constructor(private http: HttpClient, private loginService: LoginService){
         const {name, type, id} = this.loginService.getData();
         this.id = id
@@ -41,14 +46,28 @@ export class ProductService{
 
     
     data.forEach((e:any) =>
-      
         
      listProducts.push(Object.assign(new Product, e))
 
-  
      )
 
     return listProducts
 
   }
+
+  // Para buscar o produto no momento de fazer a atualização:
+  public listById(id:string|null):Observable<Product>{
+    const url = `${environment.baseUrlBackend}/product/listOne/${id}`
+
+    
+    return this.http.get(url).pipe(
+        map(this.mapToProduct)
+    )
+  }
+
+  private mapToProduct(data:any):Product{
+    return(Object.assign(new Product,data))
+  }
+
+
 }

@@ -14,6 +14,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
 import { SellerComponent } from './private/seller/seller.component';
 import { EditProductComponent } from './private/edit-product/edit-product.component';
+import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditProductComponent } from './private/edit-product/edit-product.compon
     CadastroComponent,
     CarrinhoComprasComponent,
     SellerComponent,
-    EditProductComponent
+    EditProductComponent,
+    AlterarProductComponent
   ],
   imports: [
     BrowserModule,

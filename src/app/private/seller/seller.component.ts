@@ -33,13 +33,7 @@ export class SellerComponent {
     this.imageLink = ''
   }
 
-  // Irá lidar com o evento da seleção do arquivo e irá
-  // estabelecer o arquivo no form control:
-  /*
-       selectImage(event: any){
-  this.imageLink = event?.target.files[0]
-}
-  */
+  
 
   public criaFormCadastro(): FormGroup{
     return this.fb.group({
