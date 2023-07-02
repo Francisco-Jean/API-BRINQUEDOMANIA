@@ -1,19 +1,18 @@
-.corousel-slide {
-  height: 450px;
-  width: 100%;
+.carousel.slide {
+  width: 99%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .carousel-inner img {
-  width: 100%;
   height: 100%;
+  border-radius: 10px;
 }
 
 .carousel-item {
-  height: 450px;
-  width: 100%;
+  height: 400px;
 }
 
-.button {
-  background-color: #4CAF50;
-}
 

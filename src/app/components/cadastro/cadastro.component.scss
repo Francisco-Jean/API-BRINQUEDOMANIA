@@ -1,15 +1,15 @@
 .navbar {
-    background-color: #8bb9e2;
+    background-color: #58b1ff;
     top: 0;
     width:100;
     z-index: 1;
   
   }
 
-  .navbar-brand img {
-    display: flex;
-    width: 80px;
-  }
+.navbar-brand img {
+  display: flex;
+  width: 80px;
+}
   
 .image-container {
   
@@ -30,26 +30,26 @@
    object-fit: cover;
  }
  
- .form-container {
+.form-container {
+  position:absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(172, 185, 196, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  width: 30%;
+}
 
-   position:absolute;
-   top: 80%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   background-color: rgba(172, 185, 196, 0.8);
-   padding: 30px;
-   
-   
- }
- .class-header{
-   margin-top: -10px;
-   
-   background-color: #8bb9e2;
-   padding: 10px;
- }
+.card.shadow.round.mt-6 {
+  border-radius: 10px;
+  background-color: #58b1ff;
+  padding: 5px;
+}
+
  .text-center{
    color: white;
-   font-size:40px;
+   font-size:30px;
  }
  
  ::placeholder {

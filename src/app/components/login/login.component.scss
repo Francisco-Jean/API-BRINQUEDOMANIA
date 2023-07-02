@@ -1,8 +1,5 @@
-
-
-
 .navbar {
-  background-color: #8bb9e2;
+  background-color: #58b1ff;
   top: 0;
   width:100;
   z-index: 1;
@@ -38,14 +35,14 @@
   transform: translate(-50%, -50%);
   background-color: rgba(172, 185, 196, 0.8);
   padding: 50px;
+  border-radius: 10px;
 }
-.class-header{
-  margin-top: -20px;
-  
-  background-color: #8bb9e2;
-  padding: 10px;
-  
+
+.card.shadow.round.mt-6 {
+  border-radius: 10px;
+  background-color: #58b1ff;
 }
+
 .text-center{
   color: white;
   font-size:40px;

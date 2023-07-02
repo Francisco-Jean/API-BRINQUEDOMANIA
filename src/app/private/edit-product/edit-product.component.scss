@@ -1,27 +1,29 @@
 .navbar {
-    background-color: #8bb9e2;
-    
-    width:100%;
-    z-index: 1;
-   
-  }
+  background-color: #58b1ff;    
+  width:100%;
+  z-index: 1;
+}
 
-  .navbar-brand img {
-    width: 100px;
-    height: 80px;
-  }
+.navbar-brand img {
+  width: 80px;
+}
 
-  .mt-3.mb-3.p-3.card.shadow {
-    background-color: gray;
-  }
+.table tr td {
+  background-color: rgb(241, 241, 241);
+}
 
-  .table {
-    background-color: gray;
-  }
+.table tr th {
+  background-color: rgb(241, 241, 241);
+}
 
-  .card.shadow {
-    width: 80%;;
-    position:absolute;
-    font-size: 20px;
-  }
+.mt-3.mb-3.p-3.card.shadow {
+  background-color: rgb(241, 241, 241);
+}
+
+.card.shadow {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
 
