@@ -28,7 +28,7 @@
 
       <ul class="navbar-nav ml-auto">
           <li class="nav-item1">
-  <a class="nav-link " href="carrinho" class="link1">
+  <a  [hidden]="isSeller()" class="nav-link    "href="carrinho" class="link1">
     <img id="trem" src="assets/trem.png" alt="">
     <span class="btn btn-info" routerLink="/carrinho"> Minhas compras </span>
   </a>

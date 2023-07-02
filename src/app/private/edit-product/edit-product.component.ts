@@ -56,7 +56,7 @@ export class EditProductComponent implements OnInit, AfterViewInit {
       },
       res => {
         this.toastr.success('Produto deletado com sucesso!');
-        
+        this.listProducts = this.listProducts.filter(e=> e.id !== productId)
       }
     );
   
