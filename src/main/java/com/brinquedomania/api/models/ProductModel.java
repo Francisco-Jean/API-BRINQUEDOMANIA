@@ -25,7 +25,6 @@ public class ProductModel implements Serializable {
     @Column(name = "IMAGE", nullable = false)
     private String imageLink;
 
-
     public UUID getId() {
         return id;
     }
