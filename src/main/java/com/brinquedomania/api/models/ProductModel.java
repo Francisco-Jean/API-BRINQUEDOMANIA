@@ -16,6 +16,8 @@ public class ProductModel implements Serializable {
     private UUID id;
     @Column(name = "ID_SELLER", nullable = false)
     private UUID idSeller;
+    @Column(name = "NAME", nullable = false)
+    private String name;
     @Column(name = "CATEGORY", nullable = false)
     private String category;
     @Column(name = "DESCRIPTION", nullable = false)
@@ -25,6 +27,12 @@ public class ProductModel implements Serializable {
     @Column(name = "IMAGE", nullable = false)
     private String imageLink;
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
     public UUID getId() {
         return id;
     }

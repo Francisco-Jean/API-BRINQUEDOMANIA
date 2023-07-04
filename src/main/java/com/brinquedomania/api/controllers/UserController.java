@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = "http://api-brinquedomania-production.up.railway.app")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
