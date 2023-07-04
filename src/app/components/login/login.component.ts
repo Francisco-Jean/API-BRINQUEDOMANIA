@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
  
   public criaFormLogin():FormGroup{
     return this.fb.group({
-      email:["",[Validators.required, Validators.minLength(6)]],
+      email:["",[Validators.required, Validators.minLength(6) ]],
       password:["",[Validators.required, Validators.minLength(6)]],
     })
   }
