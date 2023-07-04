@@ -38,7 +38,7 @@ export class AlterarProductComponent  implements OnInit{
   }
 
   public isFormControlInvalid(controlName:any):boolean{
-    return !!(this.formProduct.get(controlName)?.invalid && this.formProduct.get(controlName)?.touched )
+    return !!(this.formProduct.get(controlName)?.invalid && this.formProduct.get(controlName)?.touched)
   }
 
   ngOnInit(): void {

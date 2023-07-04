@@ -15,4 +15,29 @@
   height: 400px;
 }
 
+.form-control {
+  display: flex;
+  width: 100%;
+}
+
+.icon-perfil img {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.table tr td {
+  background-color: rgb(241, 241, 241);
+}
+
+.table tr th {
+  background-color: rgb(241, 241, 241);
+}
+
+.mt-3.mb-3.p-3.card.shadow {
+  background-color: rgb(241, 241, 241);
+}
 

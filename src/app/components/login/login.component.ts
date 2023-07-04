@@ -36,11 +36,10 @@ export class LoginComponent implements OnInit {
  
   public criaFormLogin():FormGroup{
     return this.fb.group({
-      email:["",[Validators.required, Validators.minLength(6) ]],
+      email:["",[Validators.required, Validators.minLength(6)]],
       password:["",[Validators.required, Validators.minLength(6)]],
     })
   }
-
 
   public isFormControlInvalid(controlName:string):boolean{
     return !!(this.formLogin.get(controlName)?.invalid && this.formLogin.get(controlName)?.touched )
