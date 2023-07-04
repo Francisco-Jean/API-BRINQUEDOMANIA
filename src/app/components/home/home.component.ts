@@ -68,4 +68,10 @@ export class HomeComponent implements OnInit {
     return false
   }
 
+  public isSeller():boolean{
+    if(this.type == "Seller" ){    
+      return true
+    }
+    return false
+  } 
 }

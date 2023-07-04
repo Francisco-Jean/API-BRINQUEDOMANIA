@@ -1,5 +1,5 @@
 <app-layout></app-layout>
-  <div [hidden]="!isClient()" [hidden]="!notLogged()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div [hidden]="isSeller()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="2000">
           <img src="assets/homiranha.png" class="d-block w-100" alt="...">
