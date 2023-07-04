@@ -1,3 +1,4 @@
+import { ProductService } from './../../private/shared/product.service';
 
 import { LoginService } from './../login/login.service';
 import {  CadastroComponent } from './../cadastro/cadastro.component';
@@ -33,14 +34,24 @@ export class HomeComponent implements OnInit {
   name:string | null;
   type:string | null;
   id:string | null;
-  constructor(private loginService:LoginService,private route:Router,) {
+  
+  productList: any [] =[]
+  constructor(private loginService:LoginService,private route:Router, private productService:ProductService) {
 
   const{name, type, id } = this.loginService.getData();
   this.name = name
   this.type = type
   this.id = id
  }
+
   ngOnInit(): void {
+    this.loadAllProducts(); 
+  }
+
+  loadAllProducts(){
+    this.productService.listAll().subscribe((res:any)=>{
+    this.productList = res;
+    })
   }
 
 }

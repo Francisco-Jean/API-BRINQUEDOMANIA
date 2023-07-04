@@ -65,6 +65,7 @@ export class SellerComponent {
     this.http.post(url,bodyData).subscribe(
        res=>{
         this.toast.success("Cadastro efetuado com sucesso!");
+        this.route.navigate(['editProduct'])
       },
       err=>(
         this.toast.error('Falha ao efetuar Cadastro')

@@ -65,7 +65,7 @@ export class AlterarProductComponent  implements OnInit{
       this.productService.update(product).subscribe(
         res =>(
           this.formProduct.reset(),
-          this.toastr.success(`Produto ${product.description} atualizado!`),
+          this.toastr.success(`Produto ${product.name} atualizado!`),
            this.router.navigate(['editProduct'])
           ),
          err =>(
