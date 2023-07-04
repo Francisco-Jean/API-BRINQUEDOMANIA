@@ -13,30 +13,42 @@ export class LayoutComponent {
   type:string | null;
   id:string | null
 
-constructor(private loginService:LoginService){
-  const{name, type, id } = this.loginService.getData();
-  this.name = name
-  this.type = type
-  this.id = id
-}  
-loggedOut():boolean{
- if(this.name==undefined ||this.type == undefined || this.id == undefined ){
-  return true
- }
-  return false
-}
+  constructor(private loginService:LoginService){
+    const{name, type, id } = this.loginService.getData();
+    this.name = name
+    this.type = type
+    this.id = id
+  }  
 
-logOut(){
-  localStorage.clear()
-
+  loggedOut():boolean{
+    if(this.name==undefined ||this.type == undefined || this.id == undefined ){
+      return true
+    }
+      return false
   }
 
- public isSeller():boolean{
-  if(this.type =="Seller" ){
-        
-    return true
- }
- return false
+  logOut(){
+    localStorage.clear()
+  } 
 
- } 
+  public isSeller():boolean{
+    if(this.type == "Seller" ){    
+      return true
+    }
+    return false
+  } 
+
+  public isClient():boolean{
+    if(this.type == "Client" ){
+      return true
+    }
+    return false
+  }
+
+  public notLogged():boolean{
+    if(this.type == null ){    
+      return true
+    }
+    return false
+  }
 }

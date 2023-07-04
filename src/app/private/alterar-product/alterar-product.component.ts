@@ -30,7 +30,7 @@ export class AlterarProductComponent  implements OnInit{
         idSeller:[null, Validators.required],
         name:[null,[Validators.required, Validators.minLength(3) ]],
         category:[null,[Validators.required,  ]],
-        value:[null,[Validators.required, Validators.pattern(/^\d{1,5}\.\d{2}$/)  ]],
+        value:[null,[Validators.required, Validators.pattern(/^\d{1,5}\.\d{2}$/)]],
         description:[null,[Validators.required, Validators.minLength(10) ]],
         imageLink:[null,[Validators.required,  ]],
 
@@ -65,7 +65,7 @@ export class AlterarProductComponent  implements OnInit{
       this.productService.update(product).subscribe(
         res =>(
           this.formProduct.reset(),
-          this.toastr.success(`Produto ${product.description} atualizado!`),
+          this.toastr.success(`Produto ${product.name} atualizado!`),
            this.router.navigate(['editProduct'])
           ),
          err =>(
