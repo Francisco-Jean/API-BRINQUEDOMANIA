@@ -63,7 +63,7 @@ export class SellerComponent {
     }
 
     this.http.post(url,bodyData).subscribe(
-       res=>{
+      res=>{
         this.toast.success("Cadastro efetuado com sucesso!");
         this.route.navigate(['editProduct'])
       },

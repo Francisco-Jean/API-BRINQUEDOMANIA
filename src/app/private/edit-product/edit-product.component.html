@@ -4,11 +4,11 @@
     </div>
 </nav>
     
-  <div class="gradient-background">
+<div class="gradient-background">
     <div class="container">
         <div id="tabela" class="mt-3 mb-3 p-3 card shadow">
             <div class="d-flex justify-content-between">
-                <h2>Atualizar Produto</h2>  
+                <h2>Editar Produto</h2>  
                 <button class="btn btn-sm btn-secondary" routerLink="/home"> Voltar</button>   
             </div> 
      <div class="table-reponsive">
@@ -43,23 +43,13 @@
                     <td>{{product.value}}</td>
                     <td>
                         <a  routerLink="product/view/{{product.id}}" class="btn btn-sm btn-primary">
-        
-        
-          
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            
-        
-                                class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                    
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">    
                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-         
-                                <path
-            
-                               d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                      </svg>
+                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                            </svg>
      
                         </a>
-                 &nbsp;
+                &nbsp;
               
                         <a id="tooltip"  data-bs-toggle="popover" data-bs-placement="top" title="Editar Produto" href="../alteraProduct/{{product.id}}" class="btn btn-sm btn-warning">
    

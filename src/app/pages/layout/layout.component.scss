@@ -1,5 +1,4 @@
 #nav {
-
     background-color: #58b1ff;
     top: 0;
     width: 100%;
@@ -36,7 +35,7 @@
   display: flex;
   align-items: center;
   float: left;
-  margin-left: -200px;
+  margin-left: 100px;
   text-decoration: none;
 }
 
@@ -71,10 +70,9 @@
   display: flex;
   align-items: center;
   float: left;
-  margin-left: 70px;
+  margin-left: 150px;
   text-decoration: none;
 }
-
 
 .link3 img {
   margin-right: 3px;
@@ -85,8 +83,13 @@
   font-size: 19px;
 }
 
-
-
+.link4 {
+  display: flex;
+  align-items: center;
+  float: left;
+  margin-left: 70px;
+  text-decoration: none;
+}
 
 .link4 img {
   margin-right: 3px;
@@ -97,7 +100,13 @@
   font-size: 19px;
 }
 
-
+.link5 {
+  display: flex;
+  align-items: center;
+  float: left;
+  margin-left: 70px;
+  text-decoration: none;
+}
 
 .link5 img {
   margin-right: 3px;

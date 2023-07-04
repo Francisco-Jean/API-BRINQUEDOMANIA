@@ -11,7 +11,7 @@ import { LoginService } from './../../components/login/login.service';
 })
 
 export class ProductService{
-    public name: string ="";
+  public name: string ="";
   public category: string="";
   public value:string="";
   public description: string="";

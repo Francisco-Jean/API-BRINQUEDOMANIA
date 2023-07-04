@@ -20,14 +20,14 @@ import {trigger, state, style, transition, animate} from '@angular/animations'
   
  
  
-        trigger('scale', [
-          state('void', style({ transform: 'scale(0)' })),
-          transition(':enter', [
-            animate('500ms', style({ transform: 'scale(1)' }))
-          ])
-        ])
-      ]
-    })
+    trigger('scale', [
+      state('void', style({ transform: 'scale(0)' })),
+      transition(':enter', [
+        animate('500ms', style({ transform: 'scale(1)' }))
+      ])
+    ])
+  ]
+})
 
 export class HomeComponent implements OnInit {
 
@@ -52,6 +52,20 @@ export class HomeComponent implements OnInit {
     this.productService.listAll().subscribe((res:any)=>{
     this.productList = res;
     })
+  }
+
+  public isClient():boolean{
+    if(this.type == "Client"){
+      return true
+    }
+    return false
+  }
+
+  public notLogged():boolean{
+    if(this.type == null){
+      return true
+    }
+    return false
   }
 
 }
