@@ -46,7 +46,7 @@ export class EditProductComponent implements OnInit, AfterViewInit {
 
   public removerProduct(productId:string|undefined){
    
-    if(!window.confirm(`Deseja exculir o produto de id: ${productId}?`)){
+    if(!window.confirm(`Deseja excluir o produto : ${productId}?`)){
       return
     }
    
