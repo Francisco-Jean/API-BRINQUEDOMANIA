@@ -18,6 +18,7 @@ public class ProductController {
 
     @Autowired
     ProductRepository productRepository;
+
     @PostMapping("/product/register")
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
         var productModel = new ProductModel();

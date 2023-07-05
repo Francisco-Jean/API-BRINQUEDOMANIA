@@ -2,7 +2,6 @@ package com.brinquedomania.api.models;
 
 import jakarta.persistence.*;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 
