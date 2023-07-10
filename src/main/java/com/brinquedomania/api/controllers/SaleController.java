@@ -91,7 +91,6 @@ public class SaleController {
         }
         else {
             List<SaleModel> vazia = new ArrayList<>();
-            vazia.add(new SaleModel());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(vazia);
         }
     }
