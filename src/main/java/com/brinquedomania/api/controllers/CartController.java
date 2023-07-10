@@ -3,6 +3,7 @@ package com.brinquedomania.api.controllers;
 import com.brinquedomania.api.dtos.CartRecordDto;
 import com.brinquedomania.api.models.CartModel;
 import com.brinquedomania.api.models.ProductModel;
+import com.brinquedomania.api.models.SaleModel;
 import com.brinquedomania.api.repositories.CartRepository;
 import com.brinquedomania.api.repositories.ProductRepository;
 import jakarta.validation.Valid;
@@ -65,5 +66,48 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
 
+    @PutMapping("/cart/edit")
+    public ResponseEntity<Object> updateCart(@RequestBody Map<String, Object> requestBody){
+
+        UUID idClient = UUID.fromString( (String) requestBody.get("idClient"));
+        UUID idProduct = UUID.fromString( (String) requestBody.get("idProduct"));
+        String action = (String) requestBody.get("action");
+
+        Optional<CartModel> newCart = cartRepository.findByIdClient(idClient);
+        System.out.println(newCart);
+        if (newCart.isPresent()){
+            var products = newCart.get().getIdsProducts();
+            if (action.equals("add")){
+                if (products.containsKey(idProduct)){
+                    products.put(idProduct, products.get(idProduct) + 1);
+                }
+                else {
+                    newCart.get().addProduct(idProduct, 1);
+                }
+                Float value = productRepository.findById(idProduct).get().getValue();
+                newCart.get().setAmount(newCart.get().getAmount() + value);
+            }
+            else if (action.equals("remove")) {
+                products.put(idProduct, products.get(idProduct) - 1);
+                Float value = productRepository.findById(idProduct).get().getValue();
+                newCart.get().setAmount(newCart.get().getAmount() - value);
+                if (products.get(idProduct) == 0){
+                    products.remove(idProduct);
+                }
+                if (newCart.get().getIdsProducts().isEmpty()){
+                    newCart.get().setAmount(0.0F);
+                }
+            }
+            newCart.get().setIdsProducts(products);
+        }
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(cartRepository.save(newCart.get()));
+    }
+
+    @GetMapping("/cart/listAll")
+    public ResponseEntity<List<CartModel>> getAllCarts() {
+        return ResponseEntity.status(HttpStatus.OK).body(cartRepository.findAll());
+    }
 
 }

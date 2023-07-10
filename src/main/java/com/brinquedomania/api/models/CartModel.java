@@ -3,6 +3,7 @@ package com.brinquedomania.api.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class CartModel implements Serializable {
     @CollectionTable(name = "PRODUCTS_CART")
     @MapKeyColumn(name = "idProduct")
     @Column(name = "quantity")
-    private Map<UUID, Integer> idsProducts;
+    private Map<UUID, Integer> products;
 
     private Float amount = 0F;
 
@@ -44,11 +45,11 @@ public class CartModel implements Serializable {
 
 
     public Map<UUID, Integer> getIdsProducts() {
-        return idsProducts;
+        return products;
     }
 
     public void setIdsProducts(Map<UUID, Integer> idsProducts) {
-        this.idsProducts = idsProducts;
+        this.products = idsProducts;
     }
 
     public Float getAmount() {
@@ -57,5 +58,16 @@ public class CartModel implements Serializable {
 
     public void setAmount(Float amount) {
         this.amount = amount;
+    }
+
+    public void addProduct(UUID id, int quantity) {
+        if (products == null) {
+            products = new HashMap<UUID, Integer>();
+        }
+        products.put(id, quantity);
+    }
+
+    public void clearCart() {
+        this.products.clear();
     }
 }

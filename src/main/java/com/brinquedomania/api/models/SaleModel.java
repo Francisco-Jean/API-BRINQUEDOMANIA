@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,10 +23,12 @@ public class SaleModel implements Serializable {
     private Date date;
 
     @ElementCollection
-    @CollectionTable(name = "PRODUCTS")
+    @CollectionTable(name = "PRODUCTS_SALE")
     @MapKeyColumn(name = "idProduct")
     @Column(name = "quantity")
-    private Map<UUID, Integer> idsProducts;
+    private Map<UUID, Integer> products;
+
+    private String paymentMethod;
 
     public UUID getId() {
         return id;
@@ -51,12 +54,8 @@ public class SaleModel implements Serializable {
         this.idClient = idClient;
     }
 
-    public Map<UUID, Integer> getIdsProducts() {
-        return idsProducts;
-    }
-
-    public void setIdsProducts(Map<UUID, Integer> idsProducts) {
-        this.idsProducts = idsProducts;
+    public Map<UUID, Integer> getProducts() {
+        return products;
     }
 
     public Float getAmount() {
@@ -73,5 +72,20 @@ public class SaleModel implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public void addProduct(UUID id, int quantity) {
+        if (products == null) {
+            products = new HashMap<UUID, Integer>();
+        }
+        products.put(id, quantity);
     }
 }
