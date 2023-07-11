@@ -20,8 +20,12 @@ type:string | null;
       
       return true
     }
+    if(this.type ==='Manager' ){  
+      return true
+    }
     return false
   }
+
 
   canActivate(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
     return this.isAuth()

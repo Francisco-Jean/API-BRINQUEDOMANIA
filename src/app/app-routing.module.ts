@@ -9,7 +9,8 @@ import { SellerComponent } from './private/seller/seller.component';
 import { AutorizadoGuard } from './_guard/autorizado.guard';
 import { EditProductComponent } from './private/edit-product/edit-product.component';
 import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
-
+import { CadastrarVendedorComponent } from './private/gerente/cadastrar-vendedor/cadastrar-vendedor.component';
+import { VisualizarVendedorComponent } from './private/gerente/visualizar-vendedor/visualizar-vendedor.component';
 
 const routes: Routes = [
  {
@@ -62,6 +63,18 @@ const routes: Routes = [
   canActivate:[AutorizadoGuard]
  },
 
+ {
+  path: 'cadastrarVendedor',
+  component: CadastrarVendedorComponent,
+  canActivate:[AutorizadoGuard]
+ },
+
+ {
+  path: 'visualizarVendedor',
+  component:VisualizarVendedorComponent ,
+  canActivate:[AutorizadoGuard]
+ },
+ 
 
 {
   path:'**', redirectTo:'home'

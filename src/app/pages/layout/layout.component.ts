@@ -51,4 +51,13 @@ export class LayoutComponent {
     }
     return false
   }
+
+  public isManeger():boolean{
+    if(this.type =="Manager" ){
+      return true
+   }
+   return false
+   } 
 }
+
+
