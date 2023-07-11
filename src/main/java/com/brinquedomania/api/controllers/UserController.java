@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -76,7 +74,7 @@ public class UserController {
     }
 
     @GetMapping("/user/listByType/{type}")
-    public ResponseEntity<List<Object>> getUserByType(@PathVariable(value = "type") String type) {
+    public ResponseEntity<List<UserModel>> getUserByType(@PathVariable(value = "type") String type) {
         List<UserModel> list = userRepository.findByType(type);
 
         return ResponseEntity.status(HttpStatus.OK).body(list);
