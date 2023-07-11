@@ -74,4 +74,11 @@ public class UserController {
         userRepository.delete(userRepository.findByIdentifier(identifier));
         return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com sucesso.");
     }
+
+    @GetMapping("/user/listByType/{type}")
+    public ResponseEntity<List<Object>> getUserByType(@PathVariable(value = "type") String type) {
+        List<UserModel> list = userRepository.findByType(type);
+
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
 }
