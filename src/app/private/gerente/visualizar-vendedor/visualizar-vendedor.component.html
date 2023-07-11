@@ -1,0 +1,33 @@
+<div class="container">
+    
+    <div class="row">
+        <h2 id="title" class="mb-3">Vendedores</h2>
+        <h3 id="subtitle" class="mb-3">Vendedores Cadastrados</h3>
+    </div>
+
+</div>
+
+<div class="gradient-background">
+    <div class="container">
+     <div class="table-reponsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome do Vendedor</th>
+                    <th>Id</th>
+                    <th>CNPJ</th>
+                </tr>
+                
+            </thead>
+            <tbody *ngFor="let seller of listSeller">
+                <tr>
+                    <td>{{seller.name}}</td>
+                    <td>{{seller.id}}</td>
+                    <td>{{seller.identifier}}</td>
+                </tr>
+            </tbody>
+        </table>
+     </div>
+    </div>
+</div>
+              

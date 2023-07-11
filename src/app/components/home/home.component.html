@@ -1,5 +1,5 @@
 <app-layout></app-layout>
-  <div [hidden]="!isClient()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div [hidden]="!isClient() && !notLogged()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="2000">
           <img src="assets/homiranha.png" class="d-block w-100" alt="...">
@@ -23,29 +23,7 @@
       </div>
   </div>
 
-  <div [hidden]="!notLogged()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="2000">
-        <img src="assets/homiranha.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="assets/boneca.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="20000">
-        <img src="assets/carrousel2.png" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <div class="controls">
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-</div>
+
 
   <div [hidden]="!isSeller()" class="gradient-background">
     <div class="container">
@@ -80,7 +58,7 @@
       </div>
     </div>
   </div>
-  <section [hidden]="!isClient()" id="product">
+  <section [hidden]="!isClient() && !notLogged()" id="product">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -111,35 +89,4 @@
       </div>
   </section>
 
-  <section [hidden]="!notLogged()" id="product">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="row mt-3">
-                    <div class="col-lg-3 pt-1" *ngFor="let product of productList">
-                        <div class="box-shadow">
-                            <div class="card">
-                                <img class="img-fluid" style="height: 200px;" [src]="product.imageLink" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{product.name}}</h5>
-                                    <p class="card-text"><span
-                                            class="text-danger fw-semibold me-2">R${{product.value}}</span>
-                                    </p>
-                                    <div class="row">
-                                        
-                                        <div class="col-6 text-end">
-                                            <button class="btn btn-sm btn-success" > Adicionar ao Carrinho</button>
-                                        </div>
-                                    </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </div>
-    </div>
-</section>  
- 
+  
