@@ -22,7 +22,7 @@ export class SellerService{
 
     public listAll(): Observable<Seller[]>{
         // Endpoint para a listagem dos Produtos
-        const url =`${environment.baseUrlBackend}/seller/listAll`
+        const url =`${environment.baseUrlBackend}/user/listByType/{seller}`
         
         /*
          * Mapear o objeto this.http.get(url) à uma lista de <Product> 
