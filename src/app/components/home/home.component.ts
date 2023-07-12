@@ -34,15 +34,20 @@ import { v4 as uuidv4 } from 'uuid'
 })
 
 export class HomeComponent implements OnInit {
-
+  
+  
+ idsProducts: Record<string,number>
   name:string | null;
   type:string | null;
   id:string | null;
   productId: any
   quantity:number
   productList: any [] =[]
+  
   constructor(private loginService:LoginService,private route:Router, private productService:ProductService, private toast: ToastrService) {
-
+  
+    
+ this.idsProducts ={"":0}
   const{name, type, id } = this.loginService.getData();
   this.name = name
   this.type = type
@@ -63,18 +68,20 @@ export class HomeComponent implements OnInit {
     })
   }
   addItemToCart(productId: string){
-   
-   let bodyData ={
-      "idClient": this.id,
-     "idProducts": {[productId]:this.quantity }, 
-      
-    }
     
+    let bodyData  = {
+      "idClient": this.id,
+      "action": "add",
+     "idProduct": productId /**/
+    
+    }
+
+
     this.productService.addToCart(bodyData).subscribe(
       res =>{
         this.toast.success("Produto colocado no carrinho com sucesso!");
      
-     this.route.navigate(['home']);
+     this.route.navigate(['carrinho']);
       
         
      },
@@ -84,8 +91,10 @@ export class HomeComponent implements OnInit {
    )
   
 }
+
+
 save(productId: string){
-  
+  console.log(this.type)
   this.addItemToCart(productId)
 }
  

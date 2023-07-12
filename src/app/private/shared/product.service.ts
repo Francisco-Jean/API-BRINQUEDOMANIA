@@ -23,7 +23,7 @@ export class ProductService{
         this.id = id
 
     }
-
+    
     public listAll(): Observable<Product[]>{
         // Endpoint para a listagem dos Produtos
         const url =`${environment.baseUrlBackend}/product/listAll`
@@ -85,9 +85,15 @@ export class ProductService{
   }
 
   public addToCart(obj:any):Observable<any>{
-    const url = `${environment.baseUrlBackend}/cart/creat`
+    const url = `${environment.baseUrlBackend}/cart/edit`
 
-    return this.http.post(url,obj )
+    return this.http.put(url,obj )
+  }
+
+  public createCart(obj:any): Observable<any>{
+    const url = `${environment.baseUrlBackend}/cart/edit`
+
+    return this.http.put(url,obj )
   }
 
 }
