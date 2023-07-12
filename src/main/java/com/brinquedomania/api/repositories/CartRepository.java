@@ -9,13 +9,13 @@ import java.util.UUID;
 
 
 /**
- * Interface responsável por realizar as operações de CRUD do carrinho de compras no banco de dados
+ * Interface responsavel por realizar as operacoes de CRUD do carrinho de compras no banco de dados
  */
 @Repository
 public interface CartRepository extends JpaRepository<CartModel, UUID> {
 
     /**
-     * Método responsável por buscar um carrinho de compras pelo id do cliente
+     * Metodo responsavel por buscar um carrinho de compras pelo id do cliente
      * @param idClient id do cliente
      * @return Optional<CartModel>
      */

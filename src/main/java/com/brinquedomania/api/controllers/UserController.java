@@ -10,13 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Objects;
 
 
 /**
- * Classe responsável por implementar as rotas do CONTROLLER do usuario.
+ * Classe responsavel por implementar as rotas do CONTROLLER do usuario.
  */
 @RestController
 @CrossOrigin(origins = "*")
@@ -24,7 +23,7 @@ public class UserController {
 
 
     /**
-     * Atributo responsável por realizar as operações de CRUD do usuario no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD do usuario no banco de dados
      */
     @Autowired
     UserRepository userRepository;
@@ -41,7 +40,7 @@ public class UserController {
         UserModel user0 = userRepository.findByEmail(email);
 
         if (user0 == null || !Objects.equals(user0.getPassword(), senha)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario nao encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(user0);
     }
@@ -77,7 +76,7 @@ public class UserController {
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "identifier") String identifier) {
         UserModel user0 = userRepository.findByIdentifier(identifier);
         if (user0 == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario nao encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findByIdentifier(identifier));
     }
@@ -85,7 +84,7 @@ public class UserController {
     /**
      * Metodo/Rota responsavel por atualizar um usuario cadastrado no banco de dados pelo seu identificador
      * @param identifier - Identificador do usuario
-     * @param userRecordDto - DTO que contem os dados do usuario para realizar a atualização
+     * @param userRecordDto - DTO que contem os dados do usuario para realizar a atualizacao
      * @return - Retorna o usuario que foi atualizado
      */
     @PutMapping("/user/edit/{identifier}")
@@ -93,7 +92,7 @@ public class UserController {
                                              @RequestBody @Valid UserRecordDto userRecordDto) {
         UserModel user0 = userRepository.findByIdentifier(identifier);
         if(user0 == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario nao encontrado.");
         }
         var userModel = userRepository.findByIdentifier(identifier);
         BeanUtils.copyProperties(userRecordDto, userModel);
@@ -109,10 +108,10 @@ public class UserController {
     public ResponseEntity<Object> deleteUser(@PathVariable(value="identifier") String identifier) {
         UserModel user0 = userRepository.findByIdentifier(identifier);
         if(user0 == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario nao encontrado.");
         }
         userRepository.delete(userRepository.findByIdentifier(identifier));
-        return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com sucesso.");
+        return ResponseEntity.status(HttpStatus.OK).body("Usuario deletado com sucesso.");
     }
 
     /**

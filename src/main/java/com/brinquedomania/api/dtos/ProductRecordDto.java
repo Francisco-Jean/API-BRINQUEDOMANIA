@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-/**Valida os dados de entrada do registro de produto, não permitindo que campos obrigatórios estejam vazios
+/**Valida os dados de entrada do registro de produto, nao permitindo que campos obrigatorios estejam vazios
  * @param idSeller - not null
  * @param name - not blank
  * @param category - not blank

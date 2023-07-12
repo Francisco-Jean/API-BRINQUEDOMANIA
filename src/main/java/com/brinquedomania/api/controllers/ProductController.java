@@ -22,7 +22,7 @@ public class ProductController {
 
 
     /**
-     * Atributo responsável por realizar as operações de CRUD do produto no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD do produto no banco de dados
      */
     @Autowired
     ProductRepository productRepository;
@@ -57,7 +57,7 @@ public class ProductController {
     public ResponseEntity<Object> getOneProductById(@PathVariable(value = "id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if (product0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario nao encontrado.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(product0.get());
     }
@@ -65,7 +65,7 @@ public class ProductController {
     /**
      * Metodo/Rota responsavel por editar um produto especifico
      * @param id - ID do produto que deseja editar
-     * @param productRecordDto - DTO que contem os dados do produto para realizar a edição
+     * @param productRecordDto - DTO que contem os dados do produto para realizar a edicao
      * @return - Retorna o produto que foi editado
      */
     @PutMapping("/product/edit/{id}")
@@ -73,7 +73,7 @@ public class ProductController {
                                              @RequestBody @Valid ProductRecordDto productRecordDto) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if(product0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario nao encontrado.");
         }
         var productModel = product0.get();
         BeanUtils.copyProperties(productRecordDto, productModel);
@@ -89,9 +89,9 @@ public class ProductController {
     public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if(product0.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario nao encontrado.");
         }
         productRepository.delete(product0.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Usuário deletado com sucesso.");
+        return ResponseEntity.status(HttpStatus.OK).body("Usuario deletado com sucesso.");
     }
 }

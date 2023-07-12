@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Map;
 import java.util.UUID;
 
-/**Valida os dados de entrada do registro de carrinho, não permitindo que campos obrigatórios estejam vazios
+/**Valida os dados de entrada do registro de carrinho, nao permitindo que campos obrigatorios estejam vazios
  * @param idClient - not null
  * @param idsProducts - not null
  */

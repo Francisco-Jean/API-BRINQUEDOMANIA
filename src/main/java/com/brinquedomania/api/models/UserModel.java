@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-/**Classe que representa o MMODEL da entidade usuario, onde sao definidos os seus atributos e metodos de criacao de acesso aos estados.
+/**Classe que representa o MODEL da entidade usuario, onde sao definidos os seus atributos e metodos de criacao de acesso aos estados.
  */
 @Entity
 @Table(name = "TB_USERS")

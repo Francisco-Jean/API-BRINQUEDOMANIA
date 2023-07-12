@@ -3,7 +3,6 @@ package com.brinquedomania.api.controllers;
 import com.brinquedomania.api.dtos.CartRecordDto;
 import com.brinquedomania.api.models.CartModel;
 import com.brinquedomania.api.models.ProductModel;
-import com.brinquedomania.api.models.SaleModel;
 import com.brinquedomania.api.repositories.CartRepository;
 import com.brinquedomania.api.repositories.ProductRepository;
 import jakarta.validation.Valid;
@@ -26,19 +25,19 @@ import java.util.UUID;
 public class CartController {
 
     /**
-     * Atributo responsável por realizar as operações de CRUD do carrinho de compras no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD do carrinho de compras no banco de dados
      */
     @Autowired
     CartRepository cartRepository;
 
     /**
-     * Atributo responsável por realizar as operações de CRUD do produto no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD do produto no banco de dados
      */
     @Autowired
     ProductRepository productRepository;
 
     /**
-     * Método responsável por criar um carrinho de compras
+     * Metodo responsavel por criar um carrinho de compras
      * @param cartRecordDto DTO com os dados do carrinho de compras
      * @return Carrinho de compras criado
      */
@@ -69,7 +68,7 @@ public class CartController {
     }
 
     /**
-     * Método responsável por acessar um carrinho de compras pelo ID do cliente
+     * Metodo/Rota responsavel por acessar um carrinho de compras pelo ID do cliente
      * @param idClient ID do cliente
      * @return Carrinho de compras do cliente ou mensagem de erro
      */
@@ -79,12 +78,16 @@ public class CartController {
         Optional<CartModel> cart = cartRepository.findByIdClient(idClient);
 
         if (cart.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Seu carrinho de compras está vazio");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Seu carrinho de compras esta vazio");
         }
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
 
 
+    /**
+     * Metodo/Rota responsavel por editar o carrinho de compras
+     * @return Carrinho de compras editado
+     */
     @PutMapping("/cart/edit")
     public ResponseEntity<Object> updateCart(@RequestBody Map<String, Object> requestBody){
 
@@ -96,6 +99,10 @@ public class CartController {
         System.out.println(newCart);
         if (newCart.isPresent()){
             var products = newCart.get().getIdsProducts();
+
+            /**
+             * Se a acao for "add", adiciona o produto no carrinho de compras
+             */
             if (action.equals("add")){
                 if (products.containsKey(idProduct)){
                     products.put(idProduct, products.get(idProduct) + 1);
@@ -106,6 +113,10 @@ public class CartController {
                 Float value = productRepository.findById(idProduct).get().getValue();
                 newCart.get().setAmount(newCart.get().getAmount() + value);
             }
+
+            /**
+             * Se a acao for "remove", remove o produto do carrinho de compras
+             */
             else if (action.equals("remove")) {
                 products.put(idProduct, products.get(idProduct) - 1);
                 Float value = productRepository.findById(idProduct).get().getValue();
@@ -124,6 +135,10 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.OK).body(cartRepository.save(newCart.get()));
     }
 
+    /**
+     * Metodo/Rota responsavel por listar todos os carrinhos de compra
+     * @return lista com todos os carrinhos de compra
+     */
     @GetMapping("/cart/listAll")
     public ResponseEntity<List<CartModel>> getAllCarts() {
         return ResponseEntity.status(HttpStatus.OK).body(cartRepository.findAll());

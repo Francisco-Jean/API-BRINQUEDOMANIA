@@ -10,7 +10,7 @@ import java.util.UUID;
 
 
 /**
- * Interface responsável por realizar as operações de CRUD do usuario no banco de dados
+ * Interface responsavel por realizar as operacoes de CRUD do usuario no banco de dados
  */
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, UUID> {
@@ -24,19 +24,19 @@ public interface UserRepository extends JpaRepository<UserModel, UUID> {
 
         /**Metodo responsavel por buscar um usuario no banco de dados pelo seu id
         * @param id id do usuario
-        * @return - Retorna o usuario que possui o id passado como parametro
+        * @return Retorna o usuario que possui o id passado como parametro
         */
      Optional<UserModel> findById(UUID id);
 
         /**Metodo responsavel por buscar um usuario no banco de dados pelo seu username
         * @param username username do usuario
-        * @return - Retorna o usuario que possui o username passado como parametro
+        * @return Retorna o usuario que possui o username passado como parametro
         */
      UserModel findByEmail(String username);
 
         /**Metodo responsavel por buscar um usuario no banco de dados pelo seu tipo
         * @param Type tipo do usuario (Seller, Client ou User)
-        * @return - Retorna o usuario que possui o tipo passado como parametro
+        * @return Retorna o usuario que possui o tipo passado como parametro
         */
      List<UserModel> findByType(String Type);
 }

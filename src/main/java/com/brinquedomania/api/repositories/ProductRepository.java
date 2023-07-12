@@ -9,15 +9,15 @@ import java.util.UUID;
 
 
 /**
- * Interface responsável por realizar as operações de CRUD do produto no banco de dados
+ * Interface responsavel por realizar as operacoes de CRUD do produto no banco de dados
  */
 @Repository
 public interface ProductRepository extends JpaRepository<ProductModel, UUID> {
 
     /**
-     * Método responsável por buscar um produto pelo seu id
+     * Metodo responsavel por buscar um produto pelo seu id
      * @param id id do produto
-     * @return
+     * @return lista de produtos que possuem o id passado como parametro
      */
     Optional<ProductModel> findById(UUID id);
 }

@@ -11,11 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -27,19 +25,19 @@ import java.util.*;
 public class SaleController {
 
     /**
-     * Atributo responsável por realizar as operações de CRUD da venda no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD da venda no banco de dados
      */
     @Autowired
     SaleRepository saleRepository;
 
     /**
-     * Atributo responsável por realizar as operações de CRUD do carrinho de compras no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD do carrinho de compras no banco de dados
      */
     @Autowired
     CartRepository cartRepository;
 
     /**
-     * Atributo responsável por realizar as operações de CRUD do produto no banco de dados
+     * Atributo responsavel por realizar as operacoes de CRUD do produto no banco de dados
      */
     @Autowired
     ProductRepository productRepository;
@@ -57,10 +55,10 @@ public class SaleController {
         var cart = cartRepository.findByIdClient(saleModel.getIdClient());
 
         /**
-         * Verifica se o carrinho de compras está vazio
+         * Verifica se o carrinho de compras esta vazio
          */
         if (cart.isEmpty() || cart.get().getIdsProducts().isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Seu carrinho de compras está vazio. " +
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Seu carrinho de compras esta vazio. " +
                     "Adicione seus produtos nele para realizar a compra.");
         }
 
@@ -108,7 +106,7 @@ public class SaleController {
     public ResponseEntity<List<SaleModel>> getSalesBy(@RequestBody Map<String, Object> request) throws ParseException {
 
         /**
-         * Verifica se a busca das vendas será pelo vendedor
+         * Verifica se a busca das vendas sera pelo vendedor
          */
         if (((String) request.get("form")).equals("seller")){
             UUID id = UUID.fromString((String) request.get("value"));
@@ -117,7 +115,7 @@ public class SaleController {
         }
 
         /**
-         * Verifica se a busca das vendas será pelo cliente
+         * Verifica se a busca das vendas sera pelo cliente
          */
         else if (((String) request.get("form")).equals("client")){
             UUID id = UUID.fromString((String) request.get("value"));
@@ -125,7 +123,7 @@ public class SaleController {
         }
 
         /**
-         * Verifica se a busca das vendas será pela data
+         * Verifica se a busca das vendas sera pela data
          */
         else if (((String) request.get("form")).equals("date")){
 
@@ -135,7 +133,7 @@ public class SaleController {
         }
 
         /**
-         * Caso não seja nenhuma das opções acima, retorna uma lista vazia
+         * Caso nao seja nenhuma das opcoes acima, retorna uma lista vazia
          */
         else {
             List<SaleModel> vazia = new ArrayList<>();
