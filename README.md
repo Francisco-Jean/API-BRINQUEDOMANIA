@@ -1,11 +1,14 @@
-## **Universidade Federal do Ceará** | **Departamento de Computação**
-## **Disciplina: Tecnicas de Programação** | **Professor: José Macedo**
+# **Universidade Federal do Ceará** | **Departamento de Computação**
+### **Disciplina: Tecnicas de Programação** | **Professor: José Macedo**
 
 <br>
 
 # API DA LOJA DE BRINQUEDOS BRINQUEDOMANIA
+<br>
 
-<br> 
+Documentação completa: <a> https://francisco-jean.github.io/API-BRINQUEDOMANIA/ </a>
+<br>
+<br>
 
 |MEMBROS DA EQUIPE|PERFIL DO GITHUB|
 |:-:|:-:|
