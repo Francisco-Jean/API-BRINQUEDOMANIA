@@ -1,10 +1,14 @@
+import { map } from 'rxjs';
 import { ProductService } from './../../private/shared/product.service';
 
 import { LoginService } from './../login/login.service';
 import {  CadastroComponent } from './../cadastro/cadastro.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, mapToCanActivate } from '@angular/router';
 import {trigger, state, style, transition, animate} from '@angular/animations'
+import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { v4 as uuidv4 } from 'uuid'
 
 @Component({
   selector: 'app-home',
@@ -34,26 +38,57 @@ export class HomeComponent implements OnInit {
   name:string | null;
   type:string | null;
   id:string | null;
-  
+  productId: any
+  quantity:number
   productList: any [] =[]
-  constructor(private loginService:LoginService,private route:Router, private productService:ProductService) {
+  constructor(private loginService:LoginService,private route:Router, private productService:ProductService, private toast: ToastrService) {
 
   const{name, type, id } = this.loginService.getData();
   this.name = name
   this.type = type
   this.id = id
- }
 
+  this.quantity = 1
+
+  }
+  
   ngOnInit(): void {
     this.loadAllProducts(); 
   }
+
 
   loadAllProducts(){
     this.productService.listAll().subscribe((res:any)=>{
     this.productList = res;
     })
   }
-
+  addItemToCart(productId: string){
+   
+   let bodyData ={
+      "idClient": this.id,
+     "idProducts": {[productId]:this.quantity }, 
+      
+    }
+    
+    this.productService.addToCart(bodyData).subscribe(
+      res =>{
+        this.toast.success("Produto colocado no carrinho com sucesso!");
+     
+     this.route.navigate(['home']);
+      
+        
+     },
+     err =>(
+       this.toast.error('erro')
+     )
+   )
+  
+}
+save(productId: string){
+  
+  this.addItemToCart(productId)
+}
+ 
   public isClient():boolean{
     if(this.type == "Client"){
       return true

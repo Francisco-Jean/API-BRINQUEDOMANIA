@@ -21,6 +21,7 @@ export class ProductService{
     constructor(private http: HttpClient, private loginService: LoginService){
         const {name, type, id} = this.loginService.getData();
         this.id = id
+
     }
 
     public listAll(): Observable<Product[]>{
@@ -81,6 +82,12 @@ export class ProductService{
     const url = `${environment.baseUrlBackend}/product/delete/${productId}`
 
     return this.http.delete(url, {responseType: 'json'})
+  }
+
+  public addToCart(obj:any):Observable<any>{
+    const url = `${environment.baseUrlBackend}/cart/creat`
+
+    return this.http.post(url,obj )
   }
 
 }
