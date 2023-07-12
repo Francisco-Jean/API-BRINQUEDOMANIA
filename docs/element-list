@@ -1,0 +1,5 @@
+com.brinquedomania.api
+com.brinquedomania.api.controllers
+com.brinquedomania.api.dtos
+com.brinquedomania.api.models
+com.brinquedomania.api.repositories
