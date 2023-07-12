@@ -18,19 +18,37 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+
+/**
+ * Classe responsavel por implementar as rotas do CONTROLLER da venda.
+ */
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class SaleController {
 
+    /**
+     * Atributo responsável por realizar as operações de CRUD da venda no banco de dados
+     */
     @Autowired
     SaleRepository saleRepository;
 
+    /**
+     * Atributo responsável por realizar as operações de CRUD do carrinho de compras no banco de dados
+     */
     @Autowired
     CartRepository cartRepository;
 
+    /**
+     * Atributo responsável por realizar as operações de CRUD do produto no banco de dados
+     */
     @Autowired
     ProductRepository productRepository;
 
+    /**
+     * Metodo/Rota responsavel por realizar o cadastro da venda
+     * @param saleRecordDto - DTO que contem os dados da venda para realizar o cadastro
+     * @return - Retorna a venda que foi cadastrada
+     */
     @PostMapping("sale/register")
     public ResponseEntity<Object> saveSale(@RequestBody @Valid SaleRecordDto saleRecordDto){
         SaleModel saleModel = new SaleModel();
@@ -38,6 +56,9 @@ public class SaleController {
 
         var cart = cartRepository.findByIdClient(saleModel.getIdClient());
 
+        /**
+         * Verifica se o carrinho de compras está vazio
+         */
         if (cart.isEmpty() || cart.get().getIdsProducts().isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Seu carrinho de compras está vazio. " +
                     "Adicione seus produtos nele para realizar a compra.");
@@ -51,6 +72,9 @@ public class SaleController {
         saleModel.setDate(java.sql.Date.valueOf(date));
         Map<UUID, Integer> products = cart.get().getIdsProducts();
 
+        /**
+         * Adiciona os produtos do carrinho de compras na venda
+         */
         for (Map.Entry<UUID, Integer> entry : products.entrySet()) {
             UUID idProduct = entry.getKey();
             int quantidade = entry.getValue();
@@ -58,35 +82,61 @@ public class SaleController {
             saleModel.addProduct(idProduct, quantidade);
         }
 
+        /**
+          Limpa os produtos carrinho de compras e salva a venda
+         */
         cart.get().clearCart();
         cart.get().setAmount(0.0F);
         cartRepository.save(cart.get());
         return ResponseEntity.status(HttpStatus.CREATED).body(saleRepository.save(saleModel));
     }
 
+    /**
+     * Metodo/Rota responsavel por listar todas as vendas do sistema
+     * @return - Retorna uma lista com todas as vendas do sistema
+     */
     @GetMapping("/sale/listAll")
     public ResponseEntity<List<SaleModel>> getAllSales() {
         return ResponseEntity.status(HttpStatus.OK).body(saleRepository.findAll());
     }
 
+    /**
+     * Metodo/Rota responsavel por listar todas as vendas de um vendedor, de um cliente ou de uma data especifica
+     * @return - Retorna uma lista com todas as vendas do vendedor
+     */
     @PostMapping("/sale/listBy")
     public ResponseEntity<List<SaleModel>> getSalesBy(@RequestBody Map<String, Object> request) throws ParseException {
 
+        /**
+         * Verifica se a busca das vendas será pelo vendedor
+         */
         if (((String) request.get("form")).equals("seller")){
             UUID id = UUID.fromString((String) request.get("value"));
             return ResponseEntity.status(HttpStatus.OK).body(saleRepository.findByIdSeller(id));
 
         }
+
+        /**
+         * Verifica se a busca das vendas será pelo cliente
+         */
         else if (((String) request.get("form")).equals("client")){
             UUID id = UUID.fromString((String) request.get("value"));
             return ResponseEntity.status(HttpStatus.OK).body(saleRepository.findByIdClient(id));
         }
+
+        /**
+         * Verifica se a busca das vendas será pela data
+         */
         else if (((String) request.get("form")).equals("date")){
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse((String) request.get("value"));
             return ResponseEntity.status(HttpStatus.OK).body(saleRepository.findByDate(date));
         }
+
+        /**
+         * Caso não seja nenhuma das opções acima, retorna uma lista vazia
+         */
         else {
             List<SaleModel> vazia = new ArrayList<>();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(vazia);

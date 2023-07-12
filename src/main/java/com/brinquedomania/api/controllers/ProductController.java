@@ -12,23 +12,47 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+
+/**
+ * Classe responsavel por implementar as rotas do CONTROLLER do produto.
+ */
 @RestController
 @CrossOrigin(origins = "*")
 public class ProductController {
 
+
+    /**
+     * Atributo responsável por realizar as operações de CRUD do produto no banco de dados
+     */
     @Autowired
     ProductRepository productRepository;
 
+    /**
+     * Metodo/Rota responsavel por realizar o cadastro do produto
+     * @param productRecordDto - DTO que contem os dados do produto para realizar o cadastro
+     * @return - Retorna o produto que foi cadastrado
+     */
     @PostMapping("/product/register")
     public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
         var productModel = new ProductModel();
         BeanUtils.copyProperties(productRecordDto, productModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(productModel));
     }
+
+    /**
+     * Metodo/Rota responsavel por listar todos os produtos cadastrados
+     * @return - Retorna uma lista com todos os produtos cadastrados
+     */
     @GetMapping("/product/listAll")
     public ResponseEntity<List<ProductModel>> getAllProduct() {
         return ResponseEntity.status(HttpStatus.OK).body(productRepository.findAll());
     }
+
+    /**
+     * Metodo/Rota responsavel por listar um produto especifico
+     * @param id - ID do produto que deseja listar
+     * @return - Retorna o produto que foi encontrado
+     */
     @GetMapping("/product/listOne/{id}")
     public ResponseEntity<Object> getOneProductById(@PathVariable(value = "id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
@@ -37,6 +61,13 @@ public class ProductController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(product0.get());
     }
+
+    /**
+     * Metodo/Rota responsavel por editar um produto especifico
+     * @param id - ID do produto que deseja editar
+     * @param productRecordDto - DTO que contem os dados do produto para realizar a edição
+     * @return - Retorna o produto que foi editado
+     */
     @PutMapping("/product/edit/{id}")
     public ResponseEntity<Object> updateUser(@PathVariable(value="id") UUID id,
                                              @RequestBody @Valid ProductRecordDto productRecordDto) {
@@ -48,6 +79,12 @@ public class ProductController {
         BeanUtils.copyProperties(productRecordDto, productModel);
         return ResponseEntity.status(HttpStatus.OK).body(productRepository.save(productModel));
     }
+
+    /**
+     * Metodo/Rota responsavel por deletar um produto especifico
+     * @param id - ID do produto que deseja deletar
+     * @return - Retorna uma mensagem de sucesso ou erro
+     */
     @DeleteMapping("/product/delete/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
