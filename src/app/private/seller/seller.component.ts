@@ -22,7 +22,7 @@ export class SellerComponent {
   public value:string="";
   public description: string="";
   public id: string | null;
- public imageLink: string;
+  public imageLink: string;
 
   constructor(private http: HttpClient, private toast: ToastrService, private route: Router, private fb: FormBuilder, private loginService:LoginService){
     this.formCadastroProduto = this.criaFormCadastro()
@@ -32,8 +32,6 @@ export class SellerComponent {
 
     this.imageLink = ''
   }
-
-  
 
   public criaFormCadastro(): FormGroup{
     return this.fb.group({

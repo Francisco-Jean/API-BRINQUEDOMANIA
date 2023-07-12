@@ -1,5 +1,5 @@
 import { ProductService } from './../../private/shared/product.service';
-
+import { SellerService } from '../../private/shared-vendedor/seller.service';
 import { LoginService } from './../login/login.service';
 import {  CadastroComponent } from './../cadastro/cadastro.component';
 import { Component, OnInit } from '@angular/core';
@@ -70,6 +70,13 @@ export class HomeComponent implements OnInit {
 
   public isSeller():boolean{
     if(this.type == "Seller" ){    
+      return true
+    }
+    return false
+  }
+
+  public isManager():boolean{
+    if(this.type == "Manager"){
       return true
     }
     return false

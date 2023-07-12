@@ -1,14 +1,16 @@
-<div class="container">
-    
-    <div class="row">
-        <h2 id="title" class="mb-3">Vendedores</h2>
-        <h3 id="subtitle" class="mb-3">Vendedores Cadastrados</h3>
+<nav class="navbar">
+    <div class="nav navbar-nav mx-auto" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="home"><img src="assets/icon.png" alt=""></a>
     </div>
-
-</div>
+</nav>
 
 <div class="gradient-background">
     <div class="container">
+        <div id="tabela" class="mt-3 mb-3 p-3 card shadow">
+            <div class="d-flex justify-content-between">
+                <h2>Vendedores cadastrados no sistema</h2>  
+                <button class="btn btn-sm btn-secondary" routerLink="/home">Voltar</button>   
+            </div> 
      <div class="table-reponsive">
         <table class="table">
             <thead>
@@ -19,7 +21,7 @@
                 </tr>
                 
             </thead>
-            <tbody *ngFor="let seller of listSeller">
+            <tbody *ngFor="let seller of listSellers">
                 <tr>
                     <td>{{seller.name}}</td>
                     <td>{{seller.id}}</td>

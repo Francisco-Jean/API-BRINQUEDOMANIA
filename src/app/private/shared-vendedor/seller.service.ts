@@ -2,8 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
 import { environment } from "src/environments/environment";
-import {Seller} from '../shared-vendedor/seller.model';
-import { LoginService } from './../../components/login/login.service';
+import {Seller} from './seller.model';
+import { LoginService } from '../../components/login/login.service';
 
 @Injectable({
     //Para usar em qualquer ponto do código
@@ -14,15 +14,19 @@ export class SellerService{
   public name: string ="";
   public identifier: string="";
   public id: string | null;
+  public password: string="";
+  public email: string="";
+  public address: string="";
+  public birt_date: string="";
     
     constructor(private http: HttpClient, private loginService: LoginService){
         const {name, type, id} = this.loginService.getData();
         this.id = id
     }
 
-    public listAll(): Observable<Seller[]>{
+    public listByType(): Observable<Seller[]>{
         // Endpoint para a listagem dos Produtos
-        const url =`${environment.baseUrlBackend}/seller/listAll`
+        const url =`${environment.baseUrlBackend}/user/listByType/Seller`
         
         /*
          * Mapear o objeto this.http.get(url) à uma lista de <Product> 
@@ -54,7 +58,7 @@ export class SellerService{
 
   // Para buscar o produto no momento de fazer a atualização:
   public listById(id:string|null):Observable<Seller>{
-    const url = `${environment.baseUrlBackend}/seller/listOne/${id}`
+    const url = `${environment.baseUrlBackend}/user/listOne/${id}`
 
     
     return this.http.get(url).pipe(
@@ -66,16 +70,16 @@ export class SellerService{
     return(Object.assign(new Seller,data))
   }
 
-  public update(product:Seller):Observable<Seller>{
-    const url = `${environment.baseUrlBackend}/seller/edit/${product.idManager}`
+  public update(seller:Seller):Observable<Seller>{
+    const url = `${environment.baseUrlBackend}/user/edit/${seller.id}`
 
-    return this.http.put(url,product).pipe(
+    return this.http.put(url,seller).pipe(
       map(this.mapToSeller)
     )
   }
 
   public delete(sellerId:string| undefined):Observable<Seller>{
-    const url = `${environment.baseUrlBackend}/seller/delete/${sellerId}`
+    const url = `${environment.baseUrlBackend}/user/delete/${sellerId}`
 
     return this.http.delete(url, {responseType: 'json'})
   }

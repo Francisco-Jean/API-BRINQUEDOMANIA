@@ -63,7 +63,7 @@ export class CadastrarVendedorComponent {
     return this.fb.group({
       email:["",[Validators.required, Validators.email ]],
       password:["",[Validators.required, Validators.minLength(6)]],
-      name:["",[Validators.required,  Validators.minLength(3), Validators.pattern('[a-zA-Z ]') ]],
+      name:["",[Validators.required,  Validators.minLength(3), Validators.pattern('[a-zA-Z ]*') ]],
       identifier:["",[Validators.required, this.validIdentifier ]],
       address: ["",[Validators.required, Validators.minLength(6)]],
       birthDate: ["", Validators.required,],
@@ -76,20 +76,20 @@ export class CadastrarVendedorComponent {
     this.address="";
     this.identifier="";
     this.password="";
-     this.birthDate = new Date()
+    this.birthDate = new Date()
     this.email=""
   }
 
   public register(){
-    const url = `${environment.baseUrlBackend}/seller/register`;       
+    const url = `${environment.baseUrlBackend}/user/register`;       
         let bodyData ={
           "name":this.name,
           "email":this.email,
           "birthDate":this.birthDate,
           "address":this.address,
           "password":this.password,
-           "identifier":this.identifier,
-           "type":"Seller"
+          "identifier":this.identifier,
+          "type":"Seller"
       }
 
     this.http.post(url,bodyData).subscribe(

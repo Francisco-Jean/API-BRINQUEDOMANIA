@@ -12,17 +12,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
-  animations: [
-    trigger('rotate', [
-      state('void', style({ transform: 'rotate(0)' })),
-      transition(':enter', [
-        animate('0s', style({ transform: "rotate(360deg)" }))
-      ])
-    ])
-  ]
-
-
 })
+
 export class CadastroComponent {
   
   public formCadastro:FormGroup

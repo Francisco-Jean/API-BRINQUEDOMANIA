@@ -10,16 +10,13 @@
   width: 80px;
 }
 
-.image-container {
-  
+.image-container { 
    /* Subtracting navbar height */
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 }
 .image-container img{
   width: 100%;
@@ -45,8 +42,7 @@
 
 .text-center{
   color: white;
-  font-size:40px;
-  
+  font-size:40px;  
 }
 
 ::placeholder {
