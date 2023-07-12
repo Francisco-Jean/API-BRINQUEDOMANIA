@@ -72,8 +72,6 @@ public class SaleController {
     @PostMapping("/sale/listBy")
     public ResponseEntity<List<SaleModel>> getSalesBy(@RequestBody Map<String, Object> request) throws ParseException {
 
-        System.out.println(request.get("form"));
-
         if (((String) request.get("form")).equals("seller")){
             UUID id = UUID.fromString((String) request.get("value"));
             return ResponseEntity.status(HttpStatus.OK).body(saleRepository.findByIdSeller(id));
