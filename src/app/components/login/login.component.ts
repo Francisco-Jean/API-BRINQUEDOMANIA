@@ -17,7 +17,6 @@ import {trigger, state, style, transition, animate} from '@angular/animations'
         animate('1s', style({opacity:1}))
       ])
     ]),]
-  
 })
 export class LoginComponent implements OnInit {
 
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
  
   public criaFormLogin():FormGroup{
     return this.fb.group({
-      email:["",[Validators.required, Validators.minLength(6) ]],
+      email:["",[Validators.required, Validators.minLength(6)]],
       password:["",[Validators.required, Validators.minLength(6)]],
     })
   }
@@ -44,10 +43,6 @@ export class LoginComponent implements OnInit {
   public isFormControlInvalid(controlName:string):boolean{
     return !!(this.formLogin.get(controlName)?.invalid && this.formLogin.get(controlName)?.touched )
   }
-
- 
-
-
 
   public submitForm(){
     const {email, password} = this.formLogin.value;
@@ -57,9 +52,7 @@ export class LoginComponent implements OnInit {
       res =>{
          this.toast.success("Login efetuado com sucesso!");
       
-      this.route.navigate(['home']);
-       
-         
+      this.route.navigate(['home']);                
       },
       err =>(
         this.toast.error(err)

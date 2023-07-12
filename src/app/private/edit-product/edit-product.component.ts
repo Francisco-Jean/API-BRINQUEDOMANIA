@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ProductService } from '../shared/product.service'
+import { ProductService } from '../shared/product.service';
 import { Product } from '../shared/product.model';
 import { LoginService } from '../../components/login/login.service';
 import { ToastrService } from 'ngx-toastr';
@@ -16,6 +16,7 @@ export class EditProductComponent implements OnInit, AfterViewInit {
   public listProducts:Array<Product>= []
   
   public id: string |null
+  
   constructor(private productService: ProductService, private loginService: LoginService, private toastr: ToastrService ){
     const {name, type, id} = this.loginService.getData();
     this.id = id
@@ -31,6 +32,7 @@ export class EditProductComponent implements OnInit, AfterViewInit {
           this.listProducts = res.filter(( product: Product) =>
             product.idSeller === this.id
           )
+          console.log(this.listProducts)
         }
     )
     

@@ -16,7 +16,7 @@ export class ProductService{
   public value:string="";
   public description: string="";
   public id: string | null;
- public imageLink: string="";
+  public imageLink: string="";
     
     constructor(private http: HttpClient, private loginService: LoginService){
         const {name, type, id} = this.loginService.getData();

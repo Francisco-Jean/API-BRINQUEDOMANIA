@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,8 @@ import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho
 import { SellerComponent } from './private/seller/seller.component';
 import { EditProductComponent } from './private/edit-product/edit-product.component';
 import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
+import { CadastrarVendedorComponent } from './private/gerente/cadastrar-vendedor/cadastrar-vendedor.component';
+import { VisualizarVendedorComponent } from './private/gerente/visualizar-vendedor/visualizar-vendedor.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { AlterarProductComponent } from './private/alterar-product/alterar-produ
     CarrinhoComprasComponent,
     SellerComponent,
     EditProductComponent,
-    AlterarProductComponent
+    AlterarProductComponent,
+    CadastrarVendedorComponent,
+    VisualizarVendedorComponent
   ],
   imports: [
     BrowserModule,
