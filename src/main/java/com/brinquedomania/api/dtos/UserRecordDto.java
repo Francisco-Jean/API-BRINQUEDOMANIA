@@ -12,7 +12,11 @@ import java.util.Date;
  * @param password - not blank
  * @param identifier - not blank
  * @param address - nao obrigatorio
+<<<<<<< Updated upstream
  * @param birthDate - nao obrigatorio
+=======
+ * @param birthDate - não obrigatorio
+>>>>>>> Stashed changes
  * @param type - not blank
  */
 public record UserRecordDto(@NotBlank String name, @Email String email,

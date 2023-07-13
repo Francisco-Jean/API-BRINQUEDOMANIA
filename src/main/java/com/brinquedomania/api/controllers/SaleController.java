@@ -133,7 +133,11 @@ public class SaleController {
         }
 
         /**
+<<<<<<< Updated upstream
          * Caso nao seja nenhuma das opcoes acima, retorna uma lista vazia
+=======
+         * Caso não seja nenhuma das opcoes acima, retorna uma lista vazia
+>>>>>>> Stashed changes
          */
         else {
             List<SaleModel> vazia = new ArrayList<>();
