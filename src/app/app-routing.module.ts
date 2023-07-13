@@ -70,19 +70,19 @@ const routes: Routes = [
  {
   path: 'cadastrarVendedor',
   component: CadastrarVendedorComponent,
-  canActivate:[AutorizadoManagerGuard]
+  canActivate:[AutorizadoGuard]
  },
 
  {
   path: 'visualizarVendedor',
   component:VisualizarVendedorComponent ,
-  canActivate:[AutorizadoManagerGuard]
+  canActivate:[AutorizadoGuard]
  },
 
  {
   path: 'visualizarVendas',
   component:ListarVendasDataComponent ,
-  canActivate:[AutorizadoManagerGuard]
+  canActivate:[AutorizadoGuard]
  },
  
  {

@@ -20,7 +20,9 @@ type:string | null;
       
       return true
     }
-   
+    if(this.type ==='Manager' ){  
+      return true
+    }
     return false
   }
 
