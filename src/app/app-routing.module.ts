@@ -7,7 +7,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { CarrinhoComprasComponent } from './components/carrinho-compras/carrinho-compras.component';
 import { SellerComponent } from './private/seller/seller.component';
 import { AutorizadoGuard} from './_guard/autorizado.guard';
-import { AutorizadoManagerGuard} from './autorizado-manager.guard'
+import { AutorizadoManagerGuard} from './guard/autorizado-manager.guard'
 import { EditProductComponent } from './private/edit-product/edit-product.component';
 import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
 import { CadastrarVendedorComponent } from './private/gerente/cadastrar-vendedor/cadastrar-vendedor.component';
