@@ -6,7 +6,9 @@ import { environment } from "src/environments/environment";
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { ProductService } from '../../shared/product.service';
+import { Product } from '../../shared/product.model';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-lista-vendas-vendedor',
   templateUrl: './lista-vendas-vendedor.component.html',
@@ -21,8 +23,9 @@ export class ListaVendasVendedorComponent implements OnInit{
   id:string | null;
   Sale: Array<Sale> = [];
   public date: string | null
+  namesProducts: Map< string ,Array<String>> = new Map< string,Array<String>>();
 
-  constructor(private fb:FormBuilder, private http: HttpClient, private loginService: LoginService){
+  constructor(private fb:FormBuilder, private http: HttpClient, private loginService: LoginService, private productService: ProductService){
     this.date = ""
     this.formSale = this.buildFormSale()
     const{id} = this.loginService.getData();
@@ -50,6 +53,22 @@ export class ListaVendasVendedorComponent implements OnInit{
     this.http.post(url, bodyData).subscribe((res:any)=>{
       this.Sale = res;
       console.log(this.Sale)
+
+      for(let sale of this.Sale){
+        let produtos = new Map<string, number>(Object.entries(sale.products!));
+        let names = new Array<String>();
+        const observables = [];
+
+for (let [key, value] of produtos) {
+  observables.push(this.productService.listById(key));
+}
+
+forkJoin(observables).subscribe((results: any[]) => {
+  let names = results.map((produto: any) => produto.name);
+  let id = sale.id;
+  this.namesProducts.set(id as string ,names);
+});
+      }
     })  
     console.log(this.date)
   }

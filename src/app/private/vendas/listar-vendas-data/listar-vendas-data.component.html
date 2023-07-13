@@ -18,15 +18,17 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>PRODUTOS</th>
                     <th>VALOR</th>
+                    <th>DATA</th>
                     <th>METODO DE PAGAMENTO</th>
                 </tr>          
             </thead>
-            <tbody *ngFor="let sale of Sale">
+            <tbody *ngFor="let sale of Sale;let i = index">
                 <tr>
-                    <td>{{sale.id}}</td>
+                    <td><p *ngFor="let name of namesProducts!.get(sale.id!)">{{name}}</p></td>
                     <td>{{sale.amount}}</td>
+                    <td>{{sale.date}}</td>
                     <td>{{sale.paymentMethod}}</td>
                 </tr>
             </tbody>
