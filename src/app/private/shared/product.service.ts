@@ -96,4 +96,35 @@ export class ProductService{
     return this.http.put(url,obj )
   }
 
+  public listAllCart(id:string|null): Observable<any>{
+    // Endpoint para a listagem dos Produtos
+    const url =`${environment.baseUrlBackend}/cart/readByIdUser/${id}`
+    
+    /*
+     * Mapear o objeto this.http.get(url) à uma lista de <Product> 
+     */
+    return this.http.get(url).pipe(
+        map(this.mapToCart)
+    )
+  }
+  private mapToCart(data: any): Array<Product>{
+    //Inicializando a Lista
+     const listCart:Product[] = []
+ 
+ /**
+  * Para cada item da lista, associar o dado (data) para um novo
+  * produto, e adicionar esse Produto na lista
+  */
+
+ 
+ data.forEach((e:any) =>
+     
+  listCart.push(Object.assign(new Product, e))
+
+  )
+
+ return listCart
+
+}
+ 
 }

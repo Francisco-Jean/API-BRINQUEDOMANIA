@@ -45,6 +45,7 @@ const routes: Routes = [
   path: 'carrinho',
   component: CarrinhoComprasComponent
  },
+ 
  {
   path: 'seller',
   component: SellerComponent,
