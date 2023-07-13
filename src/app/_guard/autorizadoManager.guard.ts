@@ -5,7 +5,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { LoginService } from '.././components/login/login.service';
 
 @Injectable()
-export class AutorizadoGuard  implements CanActivate{
+export class AutorizadoManagerGuard  implements CanActivate{
 type:string | null;
 
   constructor(private loginService: LoginService, private router: Router, ) {
@@ -16,11 +16,10 @@ type:string | null;
 
   }
   isAuth():boolean{
-    if(this.type ==='Seller' ){
-      
+ 
+    if(this.type ==='Manager' ){  
       return true
     }
-   
     return false
   }
 
