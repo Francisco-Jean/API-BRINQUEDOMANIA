@@ -75,7 +75,7 @@ export class CarrinhoComprasComponent implements OnInit {
   
   this.http.post(url,bodyData).subscribe(
     res =>{
-      this.toast.error('Venda Efetuada!')
+      this.toast.success('Venda Efetuada!')
   },
   err =>(
     this.toast.error('Falha ao efetuar venda.')
