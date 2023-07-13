@@ -37,11 +37,7 @@ public class CartController {
     ProductRepository productRepository;
 
     /**
-<<<<<<< Updated upstream
-     * Metodo responsavel por criar um carrinho de compras
-=======
      * Metodo/Rota responsavel por criar um carrinho de compras
->>>>>>> Stashed changes
      * @param cartRecordDto DTO com os dados do carrinho de compras
      * @return Carrinho de compras criado
      */
@@ -87,16 +83,10 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
 
-<<<<<<< Updated upstream
 
-    /**
-     * Metodo/Rota responsavel por editar o carrinho de compras
-     * @return Carrinho de compras editado
-=======
     /**
      * Metodo/Rota responsavel por editar um carrinho de compras (adicionar ou remover produtos)
      * @return novo carrinho de compras
->>>>>>> Stashed changes
      */
     @PutMapping("/cart/edit")
     public ResponseEntity<Object> updateCart(@RequestBody Map<String, Object> requestBody){
@@ -111,13 +101,9 @@ public class CartController {
             var products = newCart.get().getIdsProducts();
 
             /**
-<<<<<<< Updated upstream
-             * Se a acao for "add", adiciona o produto no carrinho de compras
-=======
              * Verifica se o produto ja esta no carrinho de compras
              * Se estiver, adiciona mais uma unidade
              * Se não estiver, adiciona o produto com uma unidade
->>>>>>> Stashed changes
              */
             if (action.equals("add")){
                 if (products.containsKey(idProduct)){
@@ -131,13 +117,9 @@ public class CartController {
             }
 
             /**
-<<<<<<< Updated upstream
-             * Se a acao for "remove", remove o produto do carrinho de compras
-=======
              * Verifica se o produto esta no carrinho de compras
              * Se estiver, remove uma unidade
              * Se não estiver, retorna mensagem de erro
->>>>>>> Stashed changes
              */
             else if (action.equals("remove")) {
                 products.put(idProduct, products.get(idProduct) - 1);
@@ -157,13 +139,8 @@ public class CartController {
     }
 
     /**
-<<<<<<< Updated upstream
-     * Metodo/Rota responsavel por listar todos os carrinhos de compra
-     * @return lista com todos os carrinhos de compra
-=======
-     * Metodo/Rota responsavel listar todos os carrinhos de compras
+     * Metodo/Rota responsavel por listar todos os carrinhos de compras
      * @return lista com todos os carrinhos de compras
->>>>>>> Stashed changes
      */
     @GetMapping("/cart/listAll")
     public ResponseEntity<List<CartModel>> getAllCarts() {

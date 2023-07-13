@@ -57,11 +57,7 @@ public class ProductController {
     public ResponseEntity<Object> getOneProductById(@PathVariable(value = "id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if (product0.isEmpty()) {
-<<<<<<< Updated upstream
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario nao encontrado.");
-=======
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario não encontrado.");
->>>>>>> Stashed changes
         }
         return ResponseEntity.status(HttpStatus.OK).body(product0.get());
     }
@@ -77,11 +73,7 @@ public class ProductController {
                                              @RequestBody @Valid ProductRecordDto productRecordDto) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if(product0.isEmpty()) {
-<<<<<<< Updated upstream
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario nao encontrado.");
-=======
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado.");
->>>>>>> Stashed changes
         }
         var productModel = product0.get();
         BeanUtils.copyProperties(productRecordDto, productModel);
@@ -97,11 +89,7 @@ public class ProductController {
     public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
         Optional<ProductModel> product0 = productRepository.findById(id);
         if(product0.isEmpty()) {
-<<<<<<< Updated upstream
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario nao encontrado.");
-=======
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado.");
->>>>>>> Stashed changes
         }
         productRepository.delete(product0.get());
         return ResponseEntity.status(HttpStatus.OK).body("Usuario deletado com sucesso.");
