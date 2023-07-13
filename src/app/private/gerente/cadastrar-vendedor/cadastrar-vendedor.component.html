@@ -60,14 +60,10 @@
       <div class="mb-3">
         <label for="InputAddress" class="form-label">Data de nascimento:</label>
         
-          <input type="date" [(ngModel)]="birthDate" class="form-control" id="birthDate" aria-describedby="emailHelp" formControlName="birthDate" placeholder="">
+          <input type="date" [(ngModel)]="birthDate" class="form-control" id="birthDate" aria-describedby="emailHelp" formControlName="birthDate" placeholder="Escolha um data de nascimento">
           <div class="form-text text-danger" *ngIf="isFormControlInvalid('birthDate')"> A data de nascimento é obrigatória</div>
           
-      </div>
-
-     
-  
-      
+      </div>      
   
       <div class="mb-3">
           <label for="InputPassword" class="form-label">Senha do Vendedor</label> 

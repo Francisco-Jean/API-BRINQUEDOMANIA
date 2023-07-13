@@ -12,8 +12,8 @@ import { AlterarProductComponent } from './private/alterar-product/alterar-produ
 import { CadastrarVendedorComponent } from './private/gerente/cadastrar-vendedor/cadastrar-vendedor.component';
 import { VisualizarVendedorComponent } from './private/gerente/visualizar-vendedor/visualizar-vendedor.component';
 import { DetalhesProdutoComponent } from './components/detalhes-produto/detalhes-produto.component';
+import { ListarVendasDataComponent } from './private/vendas/listar-vendas-data/listar-vendas-data.component';
 import { ListaVendasVendedorComponent } from './private/vendas/lista-vendas-vendedor/lista-vendas-vendedor.component';
-
 const routes: Routes = [
  {
   path: 'login',
@@ -75,6 +75,12 @@ const routes: Routes = [
  {
   path: 'visualizarVendedor',
   component:VisualizarVendedorComponent ,
+  canActivate:[AutorizadoGuard]
+ },
+
+ {
+  path: 'visualizarVendas',
+  component:ListarVendasDataComponent ,
   canActivate:[AutorizadoGuard]
  },
  

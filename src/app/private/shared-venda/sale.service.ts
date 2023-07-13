@@ -21,10 +21,10 @@ export class SaleService{
         const {id} = this.loginService.getData();
         this.id = id
     }
-
-    public listBy(): Observable<Sale[]>{
+    
+    public listAllSale(): Observable<Sale[]>{
         // Endpoint para a listagem dos Produtos
-        const url =`${environment.baseUrlBackend}/sale/listBy`
+        const url =`${environment.baseUrlBackend}/sale/listAll`
         
         /*
          * Mapear o objeto this.http.get(url) à uma lista de <Product> 
@@ -33,6 +33,7 @@ export class SaleService{
             map(this.mapToSale)
         )
     }
+
 
     private mapToSale(data: any): Array<Sale>{
        //Inicializando a Lista
@@ -45,8 +46,5 @@ export class SaleService{
      )
 
     return listSale
-
   }
-
-
 }

@@ -37,8 +37,6 @@ export class CarrinhoComprasComponent implements OnInit {
   private buildFormCart():FormGroup{
     return this.fb.group({
       paymentMethod:[null,[Validators.required,  ]],
-    
-
     })
 }
 

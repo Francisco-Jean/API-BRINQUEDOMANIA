@@ -52,7 +52,7 @@ export class LayoutComponent {
     return false
   }
 
-  public isManeger():boolean{
+  public isManager():boolean{
     if(this.type =="Manager" ){
       return true
    }
