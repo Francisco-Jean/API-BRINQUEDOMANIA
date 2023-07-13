@@ -8,7 +8,7 @@ import { Router, mapToCanActivate } from '@angular/router';
 import {trigger, state, style, transition, animate} from '@angular/animations'
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { v4 as uuidv4 } from 'uuid'
+
 
 @Component({
   selector: 'app-home',
