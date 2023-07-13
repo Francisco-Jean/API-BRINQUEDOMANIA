@@ -1,10 +1,14 @@
+import { map } from 'rxjs';
 import { ProductService } from './../../private/shared/product.service';
 import { SellerService } from '../../private/shared-vendedor/seller.service';
 import { LoginService } from './../login/login.service';
 import {  CadastroComponent } from './../cadastro/cadastro.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, mapToCanActivate } from '@angular/router';
 import {trigger, state, style, transition, animate} from '@angular/animations'
+import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { v4 as uuidv4 } from 'uuid'
 
 @Component({
   selector: 'app-home',
@@ -30,30 +34,70 @@ import {trigger, state, style, transition, animate} from '@angular/animations'
 })
 
 export class HomeComponent implements OnInit {
-
+  
+  
+ idsProducts: Record<string,number>
   name:string | null;
   type:string | null;
   id:string | null;
-  
+  productId: any
+  quantity:number
   productList: any [] =[]
-  constructor(private loginService:LoginService,private route:Router, private productService:ProductService) {
-
+  
+  constructor(private loginService:LoginService,private route:Router, private productService:ProductService, private toast: ToastrService) {
+  
+    
+ this.idsProducts ={"":0}
   const{name, type, id } = this.loginService.getData();
   this.name = name
   this.type = type
   this.id = id
- }
 
+  this.quantity = 1
+
+  }
+  
   ngOnInit(): void {
     this.loadAllProducts(); 
   }
+
 
   loadAllProducts(){
     this.productService.listAll().subscribe((res:any)=>{
     this.productList = res;
     })
   }
+  addItemToCart(productId: string){
+    
+    let bodyData  = {
+      "idClient": this.id,
+      "action": "add",
+     "idProduct": productId /**/
+    
+    }
 
+
+    this.productService.addToCart(bodyData).subscribe(
+      res =>{
+        this.toast.success("Produto colocado no carrinho com sucesso!");
+     
+     this.route.navigate(['carrinho']);
+      
+        
+     },
+     err =>(
+       this.toast.error('erro')
+     )
+   )
+  
+}
+
+
+save(productId: string){
+  console.log(this.type)
+  this.addItemToCart(productId)
+}
+ 
   public isClient():boolean{
     if(this.type == "Client"){
       return true
