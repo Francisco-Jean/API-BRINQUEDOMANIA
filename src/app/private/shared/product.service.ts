@@ -119,11 +119,7 @@ export class ProductService{
     cart.amount = data.amount;
     cart.id = data.id;
     cart.idClient = data.idClient;
-
-
-
  return cart
-
 }
  
 }
