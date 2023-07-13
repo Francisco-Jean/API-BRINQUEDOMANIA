@@ -85,6 +85,7 @@
       </div>
     </div>
   </div>
+   
 
   <section [hidden]="!isClient() && !notLogged()" id="product">
       <div class="container">
@@ -102,7 +103,7 @@
                                       </p>
                                       <div class="row">
                                           <div class="col-6 text-end">
-                                              <button class="btn btn-sm btn-success" > Adicionar ao Carrinho</button>
+                                              <button class="btn btn-sm btn-success" (click)="save(product.id)" > Adicionar ao Carrinho</button>
                                           </div>
                                       </div>
                                     
@@ -115,5 +116,54 @@
           </div>
       </div>
   </section>
-
-  
+ 
+  <footer>
+    <div class="container-footer">
+        <div class="row-footer">
+            <!-- footer col-->
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#"> Quem somos </a></li>
+                    <li><a href=""> nossos serviços </a></li>
+                    <li><a href=""> política de privacidade </a></li>
+                    <li><a href=""> programa de afiliados</a></li>
+                </ul>
+            </div>
+            <!--end footer col-->
+            <!-- footer col-->
+            <div class="footer-col">
+                <h4>Obter ajuda</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Transporte</a></li>
+                    <li><a href="#">devoluções</a></li>
+                    <li><a href="#">Status De Pedido</a></li>
+                    <li><a href="#">Opções De Pagamento</a></li>
+                </ul>
+            </div>
+            <!--end footer col-->
+            <!-- footer col-->
+            <div class="footer-col">
+                <h4>Loja online</h4>
+                <ul>
+                    <li><a href="#">Relógio</a></li>
+                    <li><a href="#">Saco</a></li>
+                    <li><a href="#">Calçado</a></li>
+                    <li><a href="#">Endereço</a></li>
+                </ul>
+            </div>
+            <!--end footer col-->
+            <!-- footer col-->
+            <div class="footer-col">
+                <div class="medias-socias">
+                    <a href="#"> <i class="fa fa-facebook"></i> </a>
+                    <a href="#"> <i class="fa fa-instagram"></i> </a>
+                    <a href="#"> <i class="fa fa-twitter"></i> </a>
+                    <a href="#"> <i class="fa fa-linkedin"></i> </a>
+                </div>
+            </div>
+            <!--end footer col-->
+        </div>
+    </div>
+</footer>

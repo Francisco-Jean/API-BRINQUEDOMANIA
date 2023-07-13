@@ -57,7 +57,6 @@ export class SellerComponent {
       "description": this.description,
       "idSeller": this.id,
       "imageLink": this.imageLink
-
     }
 
     this.http.post(url,bodyData).subscribe(
@@ -66,12 +65,9 @@ export class SellerComponent {
         this.route.navigate(['editProduct'])
       },
       err=>(
-        this.toast.error('Falha ao efetuar Cadastro')
-         
+        this.toast.error('Falha ao efetuar Cadastro')   
       )
-    )
-    
-
+    ) 
   }
 
   save(){

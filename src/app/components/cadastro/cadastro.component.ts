@@ -4,6 +4,7 @@ import { environment } from "src/environments/environment";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms'
+import { Observable, catchError, map } from "rxjs";
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
@@ -24,10 +25,14 @@ export class CadastroComponent {
   public password: string="";
   public birthDate = new Date()
   public email:string=""
+  public idClient:string|null
 
 
   constructor(private http: HttpClient, private toast:ToastrService,private route: Router,private fb:FormBuilder,  ){
   this.formCadastro = this.criaFormCadastro()
+
+  const{id} = this.getData()
+  this.idClient = id
 
   }
 
@@ -85,6 +90,24 @@ export class CadastroComponent {
     this.email=""
   }
 
+  public submitForm(){
+   
+
+    this.register().subscribe(
+      res =>{
+      
+       this.toast.success("Cadastro efetuado com sucesso!");
+    
+    this.route.navigate(['login']);
+     
+       
+    },
+    err =>(
+      this.toast.error('Falha ao efetuar Cadastro')
+    )
+    )
+  }
+
   public register(){
     const url = `${environment.baseUrlBackend}/user/register`;       
         let bodyData ={
@@ -97,23 +120,76 @@ export class CadastroComponent {
            "type":"Client"
       }
    
-       this.http.post(url,bodyData).subscribe(
-         res =>{
-          this.toast.success("Cadastro efetuado com sucesso!");
-       
-       this.route.navigate(['login']);
-        
-          
-       },
-       err =>(
-         this.toast.error('Falha ao efetuar Cadastro')
-       )
-       )
+   return this.http.post(url, bodyData).pipe(
+    map((data) => this.setDataLocalStorage(data)),
+    
+    catchError((err)=>{
+      this.removerDataLocalStorage();
+      throw "Falha ao efetuar o Cadastro"
+    })
+   )
 }
+
+
+public createCart(){
+  const url = `${environment.baseUrlBackend}/cart/creat`
+
+
+
+  let bodyData ={
+    "idClient":this.idClient,
+    "idsProducts": {}
+  
+}
+
+this.http.post(url,bodyData).subscribe(
+  res =>{
+  
+},
+err =>(
+  this.toast.error('erro no carrinho')
+)
+)
+}
+
+
+
 
 save(){
-  this.register()
+ 
+  this.submitForm()
+  this.createCart()
 }
 
+private setDataLocalStorage(response: any):void{
+        
+  const { type, id, name} = response;
+  localStorage.setItem(environment.type, type);
+  localStorage.setItem(environment.id, id);
+  localStorage.setItem(environment.name, name);
+        
+        
 }
+
+public getData():{name:string | null; type:string | null;id :string | null;}{
+    
+  return {
+  name: localStorage.getItem(environment.name),
+  type: localStorage.getItem(environment.type), 
+  id: localStorage.getItem(environment.id), 
+  } ;
+}
+
+
+private removerDataLocalStorage():void{
+     
+  localStorage.removeItem(environment.name),
+   localStorage.removeItem(environment.type), 
+   localStorage.removeItem(environment.id) 
+
+ }
+
+}
+
+
 
