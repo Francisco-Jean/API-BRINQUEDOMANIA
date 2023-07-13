@@ -66,7 +66,7 @@ export class CadastrarVendedorComponent {
       name:["",[Validators.required,  Validators.minLength(3), Validators.pattern('[a-zA-Z ]*') ]],
       identifier:["",[Validators.required, this.validIdentifier ]],
       address: ["",[Validators.required, Validators.minLength(6)]],
-      birthDate: ["", Validators.required,],
+      birthDate: ["", Validators.required],
       
     })
   }

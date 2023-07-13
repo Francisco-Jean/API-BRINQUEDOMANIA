@@ -18,7 +18,7 @@ export class VisualizarVendedorComponent implements OnInit, AfterViewInit {
   
   public id: string |null
 
-  constructor(private sellerService: SellerService, private loginService: LoginService, private toastr: ToastrService ){
+  constructor(private sellerService: SellerService, private loginService: LoginService, private toastr: ToastrService){
     const {name, type, id} = this.loginService.getData();
     this.id = id
   }
