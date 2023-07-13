@@ -66,7 +66,7 @@ export class CadastroComponent {
     return this.fb.group({
       email:["",[Validators.required, Validators.email ]],
       password:["",[Validators.required, Validators.minLength(6)]],
-      name:["",[Validators.required,  Validators.minLength(3), Validators.pattern('[a-zA-Z ]') ]],
+      name:["",[Validators.required,  Validators.minLength(3), Validators.pattern('[a-zA-Z ]*') ]],
       identifier:["",[Validators.required, this.validIdentifier ]],
       address: ["",[Validators.required, Validators.minLength(6)]],
       birthDate: ["", Validators.required,],

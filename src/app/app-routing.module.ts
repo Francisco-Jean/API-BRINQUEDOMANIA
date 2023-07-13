@@ -10,7 +10,8 @@ import { AutorizadoGuard } from './_guard/autorizado.guard';
 import { EditProductComponent } from './private/edit-product/edit-product.component';
 import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
 import { CadastrarVendedorComponent } from './private/gerente/cadastrar-vendedor/cadastrar-vendedor.component';
-//import { VisualizarVendedorComponent } from './private/gerente/visualizar-vendedor/visualizar-vendedor.component';
+import { VisualizarVendedorComponent } from './private/gerente/visualizar-vendedor/visualizar-vendedor.component';
+import { DetalhesProdutoComponent } from './components/detalhes-produto/detalhes-produto.component';
 
 const routes: Routes = [
  {
@@ -69,11 +70,16 @@ const routes: Routes = [
   canActivate:[AutorizadoGuard]
  },
 
-//  {
-//   path: 'visualizarVendedor',
-//   component:VisualizarVendedorComponent ,
-//   canActivate:[AutorizadoGuard]
-//  },
+ {
+  path: 'visualizarVendedor',
+  component:VisualizarVendedorComponent ,
+  canActivate:[AutorizadoGuard]
+ },
+ 
+ {
+  path: 'detalhes/:productId',
+  component: DetalhesProdutoComponent
+ },
  
 
 {

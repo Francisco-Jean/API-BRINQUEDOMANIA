@@ -34,14 +34,20 @@ export class HomeComponent implements OnInit {
   name:string | null;
   type:string | null;
   id:string | null;
+  identifier:string | null;
+  address:string | null;
+  birthDate:string | null;
   
   productList: any [] =[]
   constructor(private loginService:LoginService,private route:Router, private productService:ProductService) {
 
-  const{name, type, id } = this.loginService.getData();
+  const{name, type, id, identifier, address, birthDate } = this.loginService.getData();
   this.name = name
   this.type = type
   this.id = id
+  this.identifier = identifier
+  this.address = address
+  this.birthDate = birthDate
  }
 
   ngOnInit(): void {

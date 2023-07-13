@@ -35,10 +35,13 @@ export class LoginService{
 
    private setDataLocalStorage(response: any):void{
         
-        const { type, id, name} = response;
+        const { type, id, name, identifier, address, birthDate} = response;
         localStorage.setItem(environment.type, type);
         localStorage.setItem(environment.id, id);
         localStorage.setItem(environment.name, name);
+        localStorage.setItem(environment.identifier, identifier);
+        localStorage.setItem(environment.address, address);
+        localStorage.setItem(environment.birthDate, birthDate);
               
               
    }
@@ -47,18 +50,22 @@ export class LoginService{
      
     localStorage.removeItem(environment.name),
      localStorage.removeItem(environment.type), 
-     localStorage.removeItem(environment.id) 
+     localStorage.removeItem(environment.id),
+     localStorage.removeItem(environment.identifier) 
 
    }
 
 
 
-   public getData():{name:string | null; type:string | null;id :string | null;}{
+   public getData():{name:string | null; type:string | null;id :string | null;identifier :string | null;address :string | null;birthDate :string | null;}{
     
        return {
        name: localStorage.getItem(environment.name),
        type: localStorage.getItem(environment.type), 
        id: localStorage.getItem(environment.id), 
+       identifier:localStorage.getItem(environment.identifier),
+       address:localStorage.getItem(environment.address),
+       birthDate:localStorage.getItem(environment.birthDate)
        } ;
    }
 }

@@ -58,7 +58,7 @@ export class ProductService{
   // Para buscar o produto no momento de fazer a atualização:
   public listById(id:string|null):Observable<Product>{
     const url = `${environment.baseUrlBackend}/product/listOne/${id}`
-
+    
     
     return this.http.get(url).pipe(
         map(this.mapToProduct)

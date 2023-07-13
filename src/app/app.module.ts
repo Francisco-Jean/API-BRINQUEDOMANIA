@@ -16,6 +16,7 @@ import { EditProductComponent } from './private/edit-product/edit-product.compon
 import { AlterarProductComponent } from './private/alterar-product/alterar-product.component';
 import { CadastrarVendedorComponent } from './private/gerente/cadastrar-vendedor/cadastrar-vendedor.component';
 import { VisualizarVendedorComponent } from './private/gerente/visualizar-vendedor/visualizar-vendedor.component';
+import { DetalhesProdutoComponent } from './components/detalhes-produto/detalhes-produto.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { VisualizarVendedorComponent } from './private/gerente/visualizar-vended
     EditProductComponent,
     AlterarProductComponent,
     CadastrarVendedorComponent,
-    VisualizarVendedorComponent
+    VisualizarVendedorComponent,
+    DetalhesProdutoComponent
   ],
   imports: [
     BrowserModule,

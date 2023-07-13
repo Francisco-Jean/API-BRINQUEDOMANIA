@@ -1,14 +1,14 @@
 <app-layout></app-layout>
-<div class="background">
-  <div [hidden]="!isClient() && !notLogged()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+<div class="background" >
+  <div [hidden]="!isClient() && !notLogged()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" loop>
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="2000">
+        <div class="carousel-item active" data-bs-interval="3000">
           <img src="assets/homiranha.png" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item" data-bs-interval="2000">
+        <div class="carousel-item" data-bs-interval="3000">
           <img src="assets/boneca.png" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item" data-bs-interval="20000">
+        <div class="carousel-item" data-bs-interval="3000">
           <img src="assets/carrousel2.png" class="d-block w-100" alt="...">
         </div>
       </div>
@@ -42,25 +42,47 @@
                   <input type="text" class="form-control" readonly placeholder="{{id}}">
 
                   <label class="form-label">CNPJ:</label>
-                  <input type="text" class="form-control" readonly>
+                  <input type="text" class="form-control" readonly placeholder="{{identifier}}">
 
                   <label class="form-label">Endereço:</label>
-                  <input type="text" class="form-control" readonly>
+                  <input type="text" class="form-control" readonly placeholder="{{address}}">
 
                   <label class="form-label">Data de nascimento:</label>
-                  <input type="text" class="form-control" readonly>
-
-                  <label class="form-label">Número de vendas:</label>
-                  <input type="text" class="form-control" readonly>
+                  <input type="text" class="form-control" readonly placeholder="{{birthDate}}">
             </div>
           </form>
       </div>
     </div>
   </div>
 
-  <div class="local">
-    <div class="line">
-    <div class="name"> PRODUTOS EM DESTAQUE </div>
+  <div [hidden]="!isManager()" class="gradient-background">
+    <div class="container">
+      <div id="card" class="mt-3 mb-3 p-3 card shadow">
+          <div class="d-flex justify-content-between">
+              <h2>Seus dados</h2>   
+          </div> 
+          <div class="icon-perfil">
+            <img src="assets/icon-perfil.png">
+          </div>
+          <form>
+            <div class="mb-3">
+                  <label class="form-label">Nome:</label>
+                  <input type="text" class="form-control" readonly placeholder="{{name}}">
+
+                  <label class="form-label">Id:</label>
+                  <input type="text" class="form-control" readonly placeholder="{{id}}">
+
+                  <label class="form-label">CPF:</label>
+                  <input type="text" class="form-control" readonly placeholder="{{identifier}}">
+
+                  <label class="form-label">Endereço:</label>
+                  <input type="text" class="form-control" readonly placeholder="{{address}}">
+
+                  <label class="form-label">Data de nascimento:</label>
+                  <input type="text" class="form-control" readonly placeholder="{{birthDate}}">
+            </div>
+          </form>
+      </div>
     </div>
   </div>
 
@@ -72,10 +94,9 @@
                       <div class="col-lg-3 pt-1" *ngFor="let product of productList">
                           <div class="box-shadow">
                               <div class="card">
-                                  <img class="img-fluid" style="height: 200px;" [src]="product.imageLink" class="card-img-top"
-                                      alt="...">
+                                  <a href="/detalhes/{{product.id}}"><img src="{{product.imageLink}}" class="img-fluid" style="height: 200px;"  class="card-img-top" alt=""></a>
                                   <div class="card-body">
-                                      <h5 class="card-title">{{product.name}}</h5>
+                                      <a href="/detalhes/{{product.id}}"><h5 class="card-title" routerLink="/detalhes/{{product.id}}"> {{product.name}} </h5></a>
                                       <p class="card-text"><span
                                               class="text-danger fw-semibold me-2">R${{product.value}}</span>
                                       </p>

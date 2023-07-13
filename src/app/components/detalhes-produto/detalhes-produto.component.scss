@@ -1,0 +1,36 @@
+.detalhes-produto{
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.detalhes-produto .produto-imagem{
+    width: 100%;
+    height: 600px;
+    object-fit:contain;
+    border-radius: 100px;
+}
+
+.detalhes{
+    margin-bottom:200px;
+    text-align: center;
+  }
+
+h1{
+    padding: 30px;
+}
+h3{
+    padding: 30px;
+}
+h6{
+    padding: 30px;
+    text-align: center;
+}
+.form-button{
+    padding: 10px;
+    color: white;
+    background-color: green;
+}
+
+.descriçao{
+    text-align: center;
+}

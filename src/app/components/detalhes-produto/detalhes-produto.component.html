@@ -1,0 +1,27 @@
+<app-layout></app-layout>
+
+<div class = "row detalhes-produto" *ngIf="productData">
+    <div class="col sm-6">
+       <img class= "produto-imagem" src="{{productData.imageLink}}" alt=""> 
+    </div>
+    <div class="col sm-6">
+        <div class="detalhes">
+            <h1>{{productData.name}}</h1>
+            <h3>Preço: {{productData.value}}</h3>
+            <h6>Categoria: {{productData.category}}</h6>
+            <button class="form-button">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</div>
+<div class="descriçao">
+    <div class="deciçao-produto">
+        <hr>
+        <h2>Descrição do Produto</h2>
+        <h5>{{productData.description}}</h5>
+        <hr>
+    </div>
+    <div>
+        <h2>Id do Vendedor</h2>
+        <h5>{{productData.idSeller}}</h5>
+    </div>
+</div>
