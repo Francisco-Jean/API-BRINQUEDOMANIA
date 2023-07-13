@@ -1,14 +1,14 @@
 <app-layout></app-layout>
 <div class="background" >
   <div [hidden]="!isClient() && !notLogged()" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" loop>
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
+      <div class="carousel-inner" loop>
+        <div class="carousel-item active" data-bs-interval="2000">
           <img src="assets/homiranha.png" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item" data-bs-interval="3000">
+        <div class="carousel-item" data-bs-interval="2000">
           <img src="assets/boneca.png" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item" data-bs-interval="3000">
+        <div class="carousel-item" data-bs-interval="2000">
           <img src="assets/carrousel2.png" class="d-block w-100" alt="...">
         </div>
       </div>
@@ -22,6 +22,11 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+  </div>
+  <div class="local">
+    <div [hidden]="!isClient() && !notLogged()" class="local" class="line">
+    <div class="name"> PRODUTOS EM DESTAQUE </div>
+    </div>
   </div>
 </div>
   <div [hidden]="!isSeller()" class="gradient-background">

@@ -9,7 +9,7 @@
             <h1>{{productData.name}}</h1>
             <h3>Preço: {{productData.value}}</h3>
             <h6>Categoria: {{productData.category}}</h6>
-            <button class="form-button">Adicionar ao Carrinho</button>
+            <button class="form-button" (click)="save(productData.id)">Adicionar ao Carrinho</button>
         </div>
     </div>
 </div>

@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   
     
  this.idsProducts ={"":0}
-  const{name, type, id } = this.loginService.getData();
+  const{name, type, id,identifier, address,birthDate } = this.loginService.getData();
   this.name = name
   this.type = type
   this.id = id
