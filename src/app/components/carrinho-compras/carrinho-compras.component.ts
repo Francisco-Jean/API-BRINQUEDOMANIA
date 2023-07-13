@@ -3,6 +3,10 @@ import { ProductService } from 'src/app/private/shared/product.service';
 import { LoginService } from '../login/login.service';
 import { Cart } from 'src/app/private/shared/product.model';
 import { Product } from 'src/app/private/shared/product.model';
+import { environment } from "src/environments/environment";
+import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-carrinho-compras',
   templateUrl: './carrinho-compras.component.html',
@@ -14,7 +18,7 @@ export class CarrinhoComprasComponent implements OnInit {
   id:string | null;
   Products: Array<any> = [];
 
-  constructor(private productService:ProductService, private loginService: LoginService){
+  constructor(private toast:ToastrService,private http: HttpClient,private productService:ProductService, private loginService: LoginService){
     const{id} = this.loginService.getData();
     this.id = id
   }
@@ -40,4 +44,24 @@ export class CarrinhoComprasComponent implements OnInit {
     
     
   }
+
+  efetuarVenda(pagamento: string |null){
+    const url = `${environment.baseUrlBackend}/sale/register`
+  
+    let bodyData ={
+      "idClient":this.id,
+      "paymentMethod": pagamento
+    
+  }
+  
+  this.http.post(url,bodyData).subscribe(
+    res =>{
+      this.toast.error('Venda Efetuada!')
+  },
+  err =>(
+    this.toast.error('Falha ao efetuar venda.')
+  )
+  )
+  }
+ 
 }
