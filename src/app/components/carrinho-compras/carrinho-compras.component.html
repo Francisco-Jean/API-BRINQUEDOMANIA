@@ -68,11 +68,11 @@
                       </div>
   
   
-                      <form class="mt-4">
+                      <form class="mt-4" [formGroup]="formCart" >
                         <div class="form-outline form-white mb-4">
 
                           <label class="form-label" for="paymentMethod">Método de pagamento: </label>
-                            <select class="form-select form-control" id="paymentMethod" name="paymentMethod">
+                            <select [(ngModel)]="paymentMethod" formControlName="paymentMethod" class="form-select form-control" id="paymentMethod" name="paymentMethod">
                               <option value="pix">Pix</option>
                               <option value="cartão de crédito">Cartão de crédito</option>
                             </select>
@@ -93,7 +93,7 @@
                         <p class="mb-2">{{amount.toFixed(2)}}</p>
                       </div>
   
-                      <button type="button" class="btn btn-info btn-block btn-lg">
+                      <button type="button" class="btn btn-info btn-block btn-lg" (click)="save()">
                         <div class="d-flex justify-content-between">
                           <span>Concluir compra <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                         </div>
