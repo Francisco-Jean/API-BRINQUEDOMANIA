@@ -92,7 +92,6 @@ const routes: Routes = [
  {
   path: 'visualizarVendasVendedor',
   component: ListaVendasVendedorComponent
-
  },
 
 {

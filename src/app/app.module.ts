@@ -33,7 +33,9 @@ import { ListaVendasVendedorComponent } from './private/vendas/lista-vendas-vend
     AlterarProductComponent,
     CadastrarVendedorComponent,
     VisualizarVendedorComponent,
-    DetalhesProdutoComponent
+    DetalhesProdutoComponent,
+    ListaVendasVendedorComponent,
+    ListarVendasDataComponent
   ],
   imports: [
     BrowserModule,
