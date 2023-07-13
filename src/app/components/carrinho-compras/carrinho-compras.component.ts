@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/private/shared/product.service';
 import { LoginService } from '../login/login.service';
-
+import { Cart } from 'src/app/private/shared/product.model';
+import { Product } from 'src/app/private/shared/product.model';
 @Component({
   selector: 'app-carrinho-compras',
   templateUrl: './carrinho-compras.component.html',
   styleUrls: ['./carrinho-compras.component.scss']
 })
 export class CarrinhoComprasComponent implements OnInit {
-
+  cart:Cart = new Cart();
+  amount:number = 0;
   id:string | null;
-  cartList: any [] =[]
+  Products: Array<any> = [];
+
   constructor(private productService:ProductService, private loginService: LoginService){
     const{id} = this.loginService.getData();
     this.id = id
@@ -22,8 +25,19 @@ export class CarrinhoComprasComponent implements OnInit {
 
   loadAllCart(){
     this.productService.listAllCart(this.id).subscribe((res:any)=>{
-    this.cartList = res;
+      this.cart = res;
+      console.log(this.cart);
+
+      for (let chave of this.cart.Products!.keys()) {
+        console.log(chave);
+        this.productService.listById(chave).forEach((e:any) => this.Products.splice(this.Products.length, 0, e));
+
+      }
+
+      this.amount = this.cart.amount!;
+      console.log(this.Products);
     })
-    console.log(this.cartList);
+    
+    
   }
 }

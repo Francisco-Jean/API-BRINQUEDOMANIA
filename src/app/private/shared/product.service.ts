@@ -3,7 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
 import { environment } from "src/environments/environment";
 import {Product} from '../shared/product.model'
+import { Cart } from "../shared/product.model";
 import { LoginService } from './../../components/login/login.service';
+import { type } from "os";
 
 @Injectable({
     //Para usar em qualquer ponto do código
@@ -107,23 +109,20 @@ export class ProductService{
         map(this.mapToCart)
     )
   }
-  private mapToCart(data: any): Array<Product>{
+  private mapToCart(data: any): Cart{
     //Inicializando a Lista
-     const listCart:Product[] = []
- 
- /**
-  * Para cada item da lista, associar o dado (data) para um novo
-  * produto, e adicionar esse Produto na lista
-  */
+    let cart = new Cart();
+    let listProducts = new Array<Product>();
+    let produtos = new Map<string, number>(Object.entries(data.idsProducts));
 
- 
- data.forEach((e:any) =>
-     
-  listCart.push(Object.assign(new Product, e))
+    cart.Products = produtos;
+    cart.amount = data.amount;
+    cart.id = data.id;
+    cart.idClient = data.idClient;
 
-  )
 
- return listCart
+
+ return cart
 
 }
  

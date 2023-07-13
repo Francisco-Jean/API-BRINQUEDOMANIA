@@ -24,25 +24,25 @@
                   </div>
   
                   <div class="card mb-3" id = "card">
-                    <div class="card-body" *ngFor="let cart of cartList">
+                    <div class="card-body" *ngFor="let produto of Products">
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
                             <img
-                              src="{{cart.imageLink}}"
+                              src="{{produto.imageLink}}"
                               class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
                           </div>
                           <div class="ms-3">
-                            <h5>{{cart}}</h5>
-                            <p class="small mb-0">{{cart.description}}</p>
+                            <h5>{{produto.name}}</h5>
+                            <p class="small mb-0">{{produto.description}}</p>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">{{cart.quantity}}</h5>
+                            <h5 class="fw-normal mb-0">{{cart.Products!.get(produto.id)}}</h5>
                           </div>
                           <div style="width: 80px;">
-                            <h5 class="mb-0">R${{cart.value}}</h5>
+                            <h5 class="mb-0">R${{produto.value * cart.Products!.get(produto.id)!}}</h5>
                           </div>
                           <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                         </div>
@@ -105,24 +105,18 @@
                       <hr class="my-4">
   
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$4798.00</p>
-                      </div>
-  
-                      <div class="d-flex justify-content-between">
                         <p class="mb-2">Shipping</p>
-                        <p class="mb-2">$20.00</p>
+                        <p class="mb-2">{{'Grátis'}}</p>
                       </div>
   
                       <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total(Incl. taxes)</p>
-                        <p class="mb-2">$4818.00</p>
+                        <p class="mb-2">Total da compra</p>
+                        <p class="mb-2">{{amount.toFixed(2)}}</p>
                       </div>
   
                       <button type="button" class="btn btn-info btn-block btn-lg">
                         <div class="d-flex justify-content-between">
-                          <span>$4818.00</span>
-                          <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                          <span>Concluir compra <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                         </div>
                       </button>
   

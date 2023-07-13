@@ -12,3 +12,14 @@ export class Product{
 
     }
 }
+
+export class Cart{
+    constructor(
+        public id?:string,
+        public idClient?:string,
+        public amount?:number,
+        public Products?:Map<string, number>
+    ){
+
+    }
+}
