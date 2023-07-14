@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
         
      },
      err =>(
-       this.toast.error('Você não fez o Log-in, por favor, entre ou cadastre-se')
+       this.toast.error('Erro ao tentar adicionar no carrinho')
      )
    )
   

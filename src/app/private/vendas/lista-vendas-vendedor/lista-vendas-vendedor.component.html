@@ -18,9 +18,11 @@
                 </tr>
                 
             </thead>
-            <tbody *ngFor="let sale of Sale">
-                <tr>
-                    <td><p *ngFor="let name of namesProducts!.get(sale.id!)">{{name}}</p></td>
+            <tbody  *ngFor="let sale of Sale">
+                <tr *ngIf="nameExists('sale.id')"  >
+                    <td><p *ngFor="let name of namesProducts!.get(sale.id!)">
+                        
+                        {{name}}</p></td>
                     <td>{{sale.amount}}</td>
                     <td>{{sale.date}}</td>
                     <td>{{sale.paymentMethod}}</td>

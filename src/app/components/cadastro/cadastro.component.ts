@@ -146,9 +146,6 @@ this.http.post(url,bodyData).subscribe(
   res =>{
   
 },
-err =>(
-  this.toast.error('erro no carrinho')
-)
 )
 }
 

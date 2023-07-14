@@ -77,4 +77,11 @@ forkJoin(observables).subscribe((results: any[]) => {
     return !!(this.formSale.get(controlName)?.invalid || this.formSale.get(controlName)?.pristine )
   }
 
+  public nameExists(name: string |null): boolean{
+    if (name === undefined){
+      return false
+    }
+    return true
+  }
+
 }
