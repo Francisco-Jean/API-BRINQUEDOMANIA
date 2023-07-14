@@ -19,7 +19,7 @@
                 
             </thead>
             <tbody  *ngFor="let sale of Sale">
-                <tr *ngIf="nameExists('sale.id')"  >
+                <tr   >
                     <td><p *ngFor="let name of namesProducts!.get(sale.id!)">
                         
                         {{name}}</p></td>
